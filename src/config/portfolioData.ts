@@ -8,8 +8,8 @@ export const PORTFOLIO_INFO: Portfolio = {
     pdf: "/resume.pdf",
   },
   personal: {
-    name: "Satya Subudhi",
-    title: "Senior Engineer — Full Stack (Python & React)",
+    name: "Martín St. John",
+    title: "Unity Developer",
     headline: "React · Python · FastAPI · IaC · Cloud",
     // avatar can be a string, an object with { url, label }, or an array of those.
     avatar: [
@@ -419,19 +419,14 @@ export const PORTFOLIO_INFO: Portfolio = {
   projects: [
     {
       id: "learn-algo",
-      title: "Learn Algo",
+      title: "Unicorn Academy",
       description:
         "Interactive visualizations that transform abstract concepts into intuitive understanding. Watch sorting, searching, and ML algorithms execute step-by-step.",
       tags: ["Algorithms", "DSA", "ML", "AI", "Visualization", "Next.js"],
       image:
-        "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXpqYWFhbnBraWt3ZXhvajZsdjg5andyMGZzY2VibGg3bXE0MWxwayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2PuPWxuLV1FGyh03Ja/giphy.gif",
+        "https://cdn.prod.website-files.com/66b4121db7e26055e5c96875/691ab91cfd3232e87dffb3b6_Academy%20copy.png",
       href: "https://www.learn-algo.com",
       links: [
-        {
-          label: "GitHub",
-          url: "https://github.com/satya00089/learn-algo",
-          icon: "SiGithub",
-        },
       ],
       isUnderDevelopment: false,
     },
