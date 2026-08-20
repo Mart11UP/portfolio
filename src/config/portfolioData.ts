@@ -9,20 +9,16 @@ export const PORTFOLIO_INFO: Portfolio = {
   },
   personal: {
     name: "Martín St. John",
-    title: "Unity Developer",
+    title: "Game Developer",
     headline: "React · Python · FastAPI · IaC · Cloud",
-    // avatar can be a string, an object with { url, label }, or an array of those.
-    avatar: [
-      // use public root path so Vite serves the static asset from /public/profile.jpg
-      { url: "./profile.jpg", label: "" },
-      { url: "./profile1.jpg", label: "" },
-    ],
     summary:
       "Senior Engineer with 7+ years of experience delivering enterprise-grade applications. Over the last 3 years I have focused on building production systems using Python (FastAPI) and React — designing APIs, building responsive frontends, and automating deployments with IaC. Experienced across AWS & Azure and comfortable owning full delivery from design to production.",
     // optional hero summary used in the site hero; keeps a concise, senior-level intro tuned to your data
     hero: {
       summary:
         "Senior Engineer & product-focused Full Stack developer (React, TypeScript, Python/FastAPI). I design resilient component systems, build production-grade APIs, and optimize for performance and accessibility — driving features from design through delivery on cloud platforms.",
+      // Independent from the complete Skills section below. Choose the labels and order shown in the hero.
+      mainSkills: ["Unity", "C#", "Online Multiplayer", "Lua"],
     },
     contact: {
       email: "satyasubudhi089@gmail.com",
@@ -54,17 +50,12 @@ export const PORTFOLIO_INFO: Portfolio = {
       ],
     },
   },
-  highlights: [
-    "Senior Engineer at Unisys (Jun 2025 – Present)",
-    "5+ years focused on Python (FastAPI) and React",
-    "Experienced with AWS, Azure, Terraform, and CI/CD pipelines",
-  ],
   skills: [
     {
       title: "Frontend",
       skills: [
         {
-          name: "React",
+          name: "Unity",
           level: 90,
           icon: "SiReact",
           category: "frontend",
@@ -72,7 +63,7 @@ export const PORTFOLIO_INFO: Portfolio = {
           note: "Used in production since 2020",
         },
         {
-          name: "TypeScript",
+          name: "C#",
           level: 85,
           icon: "SiTypescript",
           category: "frontend",
@@ -80,7 +71,7 @@ export const PORTFOLIO_INFO: Portfolio = {
           note: "Used in production since 2021",
         },
         {
-          name: "JavaScript",
+          name: "Lua",
           level: 90,
           icon: "SiJavascript",
           category: "frontend",

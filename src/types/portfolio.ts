@@ -53,6 +53,7 @@ export type Personal = {
   hero?: {
     summary?: string; // concise hero paragraph
     subtitle?: string; // short subtitle under name
+    mainSkills?: string[]; // compact skill labels shown only in the hero
   };
   contact?: Contact;
 };

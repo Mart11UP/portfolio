@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
+import { ArrowUp } from "lucide-react";
 
 const SHOW_AFTER = 300;
 const FLY_MS = 900;
@@ -79,24 +80,21 @@ export const ScrollToTop: React.FC = () => {
     <motion.button
       aria-label="Scroll to top"
       type="button"
-      className="fixed bottom-6 right-6 z-50 focus:outline-none cursor-pointer"
-      style={{ display: "grid", placeItems: "center" }}
+      className="fixed bottom-6 right-6 z-50 grid h-11 w-11 cursor-pointer place-items-center rounded-full border border-[var(--brand-border)] bg-[var(--surface)] text-[var(--brand)] shadow-lg backdrop-blur-sm transition-colors hover:bg-[var(--brand-soft)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand)]"
       onClick={onActivate}
       initial="hidden"
       animate={animationState}
       variants={containerVariants}
       custom={distance}
+      whileTap={{ scale: 0.95 }}
     >
-      <motion.img
-        src="./hero-up.png"
-        alt=""
-        width={42}
-        height={42}
-        style={{ pointerEvents: "none", display: "block" }}
+      <motion.span
+        aria-hidden="true"
+        className="grid place-items-center"
         initial={{ y: 0, rotate: 0 }}
         animate={
           visible && !flying && !prefersReducedMotion.current
-            ? { y: [0, -3, 0], rotate: [0, -2, 0] }
+            ? { y: [0, -2, 0] }
             : undefined
         }
         transition={
@@ -104,8 +102,9 @@ export const ScrollToTop: React.FC = () => {
             ? { duration: 1.4, repeat: Infinity, ease: "easeInOut" }
             : undefined
         }
-        whileTap={{ scale: 0.95 }}
-      />
+      >
+        <ArrowUp size={21} strokeWidth={2} />
+      </motion.span>
     </motion.button>
   );
 };
