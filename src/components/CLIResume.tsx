@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import type { Portfolio } from "../types/portfolio";
 import { PORTFOLIO_INFO } from "../config/portfolioData";
 
@@ -7,7 +7,11 @@ const API_URL = import.meta.env.VITE_BACKEND_API_URL;
 type Props = { open?: boolean; onClose?: () => void };
 
 const resumeData: Portfolio = PORTFOLIO_INFO;
-type HistoryItem = { kind: "cmd" | "out"; text: string; meta?: any };
+type HistoryItem = {
+  kind: "cmd" | "out";
+  text: string;
+  meta?: { id?: string };
+};
 
 /* ---------- JumpingDots: small animated loader using Tailwind animate-bounce ---------- */
 function JumpingDots({ className = "" }: { className?: string }) {
@@ -56,6 +60,13 @@ export default function CLIResume({ open = false, onClose }: Props) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const wrapperRef = useRef<HTMLDivElement | null>(null);
 
+  const handleClose = useCallback(() => {
+    setVisible(false);
+    setMinimized(false);
+    setFullscreen(false);
+    onClose?.();
+  }, [onClose]);
+
   useEffect(() => setVisible(open), [open]);
 
   useEffect(() => {
@@ -81,14 +92,7 @@ export default function CLIResume({ open = false, onClose }: Props) {
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [visible]);
-
-  function handleClose() {
-    setVisible(false);
-    setMinimized(false);
-    setFullscreen(false);
-    onClose?.();
-  }
+  }, [handleClose, visible]);
 
   /* ---------------- typewriter helper ---------------- */
   async function typeOut(text: string, speed = 18) {
@@ -115,20 +119,6 @@ export default function CLIResume({ open = false, onClose }: Props) {
     });
   }
 
-  function downloadJson(obj: any, filename = "resume.json") {
-    const blob = new Blob([JSON.stringify(obj, null, 2)], {
-      type: "application/json",
-    });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(url);
-  }
-
   /* ---------------- command runner (kept intact except awaiting API) ---------------- */
   async function runCommand(raw: string) {
     const cmd = raw.trim();
@@ -150,9 +140,7 @@ export default function CLIResume({ open = false, onClose }: Props) {
               "projects — List featured projects",
               "experience — List work roles (ids shown)",
               "role <id> — Show role detail",
-              "open <id|resume> — Open project/role/resume in new tab",
-              "resume --pdf — Open pre-rendered PDF resume (if provided)",
-              "resume --json — Download resume JSON",
+              "open <project-id|role-id> — Open a project or role in a new tab",
               "contact — Show contact links",
               "clear — Clear terminal",
             ].join("\n") + "\n",
@@ -250,23 +238,7 @@ export default function CLIResume({ open = false, onClose }: Props) {
         case "open": {
           const target = args[0];
           if (!target) {
-            await typeOut(`Usage: open <project-id|role-id|resume>\n`);
-            break;
-          }
-          if (target === "resume") {
-            const pdf = resumeData.meta?.pdf;
-            const url =
-              pdf ??
-              resumeData.meta?.url ??
-              resumeData.personal.contact?.website;
-            if (url) {
-              await typeOut(`Opening resume at ${url}\n`);
-              window.open(url, "_blank", "noopener");
-            } else {
-              await typeOut(
-                "No resume URL found in resume.meta or personal.contact.website.\n",
-              );
-            }
+            await typeOut(`Usage: open <project-id|role-id>\n`);
             break;
           }
           const proj = (resumeData.projects || []).find((p) => p.id === target);
@@ -293,36 +265,6 @@ export default function CLIResume({ open = false, onClose }: Props) {
             break;
           }
           await typeOut(`No project or role found with id "${target}".\n`);
-          break;
-        }
-        case "resume": {
-          const flag = args[0];
-          if (flag === "--pdf") {
-            const pdf = resumeData.meta?.pdf;
-            if (pdf) {
-              await typeOut(`Opening PDF resume: ${pdf}\n`);
-              window.open(pdf, "_blank", "noopener");
-            } else {
-              await typeOut("No PDF available (resume.meta.pdf not set).\n");
-            }
-          } else if (flag === "--json") {
-            await typeOut("Downloading resume JSON.\n");
-            downloadJson(
-              resumeData,
-              `${resumeData.personal.name.replace(/\s+/g, "_")}_resume.json`,
-            );
-          } else {
-            const url =
-              resumeData.meta?.url ??
-              resumeData.meta?.pdf ??
-              resumeData.personal.contact?.website;
-            if (url) {
-              await typeOut(`Opening ${url}\n`);
-              window.open(url, "_blank", "noopener");
-            } else {
-              await typeOut("No resume URL or PDF found in resume.meta.\n");
-            }
-          }
           break;
         }
         case "contact": {
@@ -404,7 +346,6 @@ export default function CLIResume({ open = false, onClose }: Props) {
         "experience",
         "role",
         "open",
-        "resume",
         "contact",
         "clear",
       ];

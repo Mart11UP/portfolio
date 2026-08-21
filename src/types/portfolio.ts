@@ -144,8 +144,7 @@ export type Portfolio = {
     createdAt?: string;
     updatedAt?: string;
     locale?: string;
-    url?: string; // canonical url to portfolio/resume
-    pdf?: string; // pre-rendered PDF link if available
+    url?: string; // canonical portfolio URL
   };
   personal: Personal;
   summary?: string; // a single summary paragraph (optional)

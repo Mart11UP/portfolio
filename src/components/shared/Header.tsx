@@ -2,7 +2,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
   motion,
-  AnimatePresence,
   useScroll,
   useTransform,
   animate,
@@ -109,10 +108,33 @@ export const Header: React.FC<{ links?: NavLink[]; onTryCLI?: () => void }> = ({
           opacity: overlayOpacity,
         }}
       />
-      <div className="relative max-w-6xl mx-auto px-6 py-4 flex items-center justify-end">
+      <div className="relative mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-4 2xl:max-w-7xl">
+        <a
+          href="#about"
+          onClick={(e) => onNavClick(e, "#about")}
+          className="inline-flex h-9 shrink-0 items-center text-base font-bold leading-none tracking-tight text-[var(--text)]"
+          style={{ fontFamily: '"Google Sans", sans-serif' }}
+          aria-label="Mart11UP — back to About"
+        >
+          Mart
+          <span
+            className="text-base"
+            style={{
+              color: "var(--brand)",
+            }}
+          >
+            11
+          </span>
+          <span className="text-sm text-[var(--brand)]">UP</span>
+        </a>
+
         {/* Right: nav + theme + Try CLI */}
-        <nav aria-label="Primary" className="relative flex items-center gap-3">
-          <div className="relative hidden sm:flex gap-4">
+        <nav
+          aria-label="Primary"
+          className="relative flex h-9 items-center gap-2 sm:gap-3"
+          style={{ fontFamily: '"Google Sans", sans-serif' }}
+        >
+          <div className="relative hidden h-9 items-center gap-4 sm:flex">
             {links.map((l) => {
               const isActive = active === l.href;
               return (
@@ -120,22 +142,14 @@ export const Header: React.FC<{ links?: NavLink[]; onTryCLI?: () => void }> = ({
                   key={l.href}
                   href={l.href}
                   onClick={(e) => onNavClick(e, l.href)}
-                  className="relative px-1 py-0.5 text-sm text-[var(--text)]"
+                  className={`relative inline-flex h-9 items-center px-1 text-sm leading-none transition-[color,font-weight] duration-300 ease-out ${
+                    isActive
+                      ? "font-semibold text-[var(--brand)]"
+                      : "font-normal text-[var(--text)] hover:text-[var(--brand)]"
+                  }`}
+                  aria-current={isActive ? "location" : undefined}
                 >
                   {l.label}
-                  <AnimatePresence initial={false}>
-                    {isActive && (
-                      <motion.span
-                        layoutId="nav-underline"
-                        className="absolute left-0 right-0 -bottom-1 h-[2px] rounded-full bg-[var(--brand)]"
-                        transition={{
-                          type: "spring",
-                          stiffness: 500,
-                          damping: 40,
-                        }}
-                      />
-                    )}
-                  </AnimatePresence>
                 </a>
               );
             })}
@@ -143,7 +157,7 @@ export const Header: React.FC<{ links?: NavLink[]; onTryCLI?: () => void }> = ({
 
           <button
             onClick={onTryCLI}
-            className="sm:inline-flex items-center gap-2 px-3 py-1.5 rounded text-sm border border-[var(--border)] hover:bg-[var(--border)]/30 transition cursor-pointer"
+            className="inline-flex h-9 items-center rounded border border-[var(--border)] px-3 text-sm leading-none transition hover:bg-[var(--border)]/30 cursor-pointer"
             aria-label="Try CLI"
           >
             Try CLI
@@ -152,7 +166,7 @@ export const Header: React.FC<{ links?: NavLink[]; onTryCLI?: () => void }> = ({
           <button
             onClick={toggle}
             aria-label="Toggle color theme"
-            className="p-2 rounded-full border border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--border)]/30 transition cursor-pointer"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] transition hover:bg-[var(--border)]/30 cursor-pointer"
           >
             {dark ? <PiSunDuotone size={22} /> : <PiMoonDuotone size={22} />}
           </button>

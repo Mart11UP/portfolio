@@ -9,8 +9,8 @@ export const About: React.FC = () => {
   const name = personal.name ?? "Your Name";
   const [firstName, ...remainingNameParts] = name.trim().split(/\s+/);
   const remainingName = remainingNameParts.join(" ");
+  const accentedCharacterIndex = firstName.search(/[áéíóúÁÉÍÓÚ]/);
   const avatar = personal.avatar;
-  const resumeHref = `${import.meta.env.BASE_URL}resume.pdf`;
 
   const mainSkills = personal.hero?.mainSkills ?? [];
   const careerStats = useMemo(
@@ -34,6 +34,10 @@ export const About: React.FC = () => {
     personal.hero?.summary ??
     personal.summary ??
     "I design and build production-grade frontends and APIs, focusing on performance, accessibility, and delightful UX.";
+  const heroParagraphs = heroSummary
+    .split(/\n\s*\n/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
 
   const container = {
     hidden: { opacity: 0, y: 8 },
@@ -139,32 +143,70 @@ export const About: React.FC = () => {
             className={
               carouselItems.length > 0
                 ? "md:col-span-7"
-                : "md:col-span-8 md:col-start-2 w-full max-w-3xl"
+                : "md:col-span-8 w-full max-w-3xl"
             }
           >
             <div className="relative z-10">
-              <h1
-                className="text-[3.125rem] md:text-[4.125rem] font-semibold leading-[1] text-[var(--hero-name)]"
-                style={{ fontFamily: '"Google Sans", sans-serif', wordSpacing: "-0.04em", }}
-              >
-                <span className="block">{firstName}</span>
-                {remainingName && (
-                  <span className="block">{remainingName}</span>
-                )}
-              </h1>
 
-              {personal.title && (
-                <div className="mt-1 text-sm font-semibold uppercase tracking-[0.08em] text-[var(--brand)]">
+              <div className="inline-flex w-fit max-w-full flex-col items-stretch">
+                <h1
+                  className="whitespace-nowrap text-[clamp(2.4rem,11vw,4.125rem)] font-semibold leading-none text-[var(--hero-name)]"
+                  style={{
+                    fontFamily: '"Google Sans", sans-serif',
+                    wordSpacing: "-0.04em",
+                  }}
+                >
+                  {accentedCharacterIndex >= 0 ? (
+                    <>
+                      {firstName.slice(0, accentedCharacterIndex)}
+                      <span
+                        style={{
+                          backgroundImage:
+                            "linear-gradient(to bottom, var(--brand) 0 36%, var(--hero-name) 36% 100%)",
+                          backgroundClip: "text",
+                          WebkitBackgroundClip: "text",
+                          color: "transparent",
+                        }}
+                      >
+                        {firstName[accentedCharacterIndex]}
+                      </span>
+                      {firstName.slice(accentedCharacterIndex + 1)}
+                    </>
+                  ) : (
+                    firstName
+                  )}
+                  {remainingName && (
+                    <>
+                      {" "}
+                      <span className="text-[var(--brand)]">{remainingName}</span>
+                    </>
+                  )}
+                </h1>
+              </div>
+               {personal.title && (
+                <div
+                  className="mb-1 text-sm-2 tracking-[0.08em] text-[var(--hero-name)]"
+                  style={{
+                    fontFamily: '"Google Sans", sans-serif',
+                    fontWeight: 400,
+                  }}
+                >
                   {personal.title}
                 </div>
               )}
-
-              <motion.p
+              <motion.div
                 variants={item}
-                className="mt-6 max-w-2xl text-lg text-[var(--hero-copy)]"
+                className="mt-6 max-w-2xl space-y-2 text-lg text-[var(--hero-copy)]"
               >
-                {heroSummary}
-              </motion.p>
+                {heroParagraphs.map((paragraph, index) => (
+                  <p
+                    key={`${index}-${paragraph.slice(0, 24)}`}
+                    className={"opacity-75"}
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </motion.div>
 
               {mainSkills.length > 0 && (
                 <motion.section
@@ -210,25 +252,20 @@ export const About: React.FC = () => {
               <motion.div variants={item} className="mt-8 flex flex-wrap gap-3">
                 <a
                   href="#projects"
-                  className="group inline-flex items-center gap-2 rounded-lg border border-[var(--brand)] bg-[var(--brand)] px-5 py-3 text-sm font-semibold text-[var(--brand-contrast)] shadow-[0_10px_28px_-14px_var(--brand)] transition duration-200 hover:-translate-y-0.5 hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand)]"
+                  className="inline-flex items-center rounded-lg border border-[var(--brand)] bg-[var(--brand)] px-5 py-3 text-sm font-bold text-[var(--brand-contrast)] shadow-[0_10px_28px_-14px_var(--brand)] transition duration-200 hover:-translate-y-0.5 hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand)]"
                   onClick={(e) => onNavClick(e, "#projects")}
                   onKeyDown={(e) => handleKeyActivation(e, "#projects")}
                 >
-                  See my work
-                  <span
-                    aria-hidden="true"
-                    className="transition-transform duration-200 group-hover:translate-y-0.5"
-                  >
-                    ↓
-                  </span>
+                  See my work&nbsp;▼
                 </a>
 
                 <a
-                  href={resumeHref}
-                  className="inline-flex items-center gap-2 rounded-md border border-border px-4 py-3 text-sm font-semibold text-foreground hover:bg-muted"
-                  onKeyDown={(e) => handleKeyActivation(e, resumeHref)}
+                  href="#contact"
+                  className="inline-flex items-center gap-2 rounded-md border border-border px-4 py-3 text-sm font-bold text-foreground hover:bg-muted"
+                  onClick={(e) => onNavClick(e, "#contact")}
+                  onKeyDown={(e) => handleKeyActivation(e, "#contact")}
                 >
-                  Download resume
+                  Let's talk
                 </a>
               </motion.div>
             </div>

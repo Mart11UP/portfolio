@@ -41,14 +41,14 @@ const PortfolioPage: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <div className="relative z-10 flex min-h-screen w-full items-center justify-center px-4 py-24 sm:px-6 sm:py-28 lg:px-8 lg:py-32">
-          <div className="w-full max-w-6xl 2xl:max-w-7xl mx-auto">
+        <div className="relative z-10 flex min-h-screen w-full items-center justify-center py-24 sm:py-28 lg:py-32">
+          <div className="mx-auto w-full max-w-6xl px-6 2xl:max-w-7xl">
             <About />
           </div>
         </div>
       </motion.section>
 
-      <main className="max-w-6xl 2xl:max-w-9xl mx-auto px-6 py-15 sm:py-20 lg:py-32 relative z-20">
+      <main className="relative z-20 mx-auto w-full max-w-6xl px-6 py-15 sm:py-20 lg:py-32 2xl:max-w-7xl">
         <section id="projects" className="py-8">
           <h2 className="text-2xl font-semibold text-[var(--brand)]">Projects</h2>
           <p className="mb-6 text-sm text-gray-500 dark:text-gray-400 mt-1">
@@ -94,15 +94,6 @@ const PortfolioPage: React.FC = () => {
                 <div className="text-sm text-gray-500 dark:text-gray-400">
                   Location: Remote
                 </div>
-              </div>
-              <div className="mt-auto">
-                <div className="text-sm font-medium">Resume</div>
-                <a
-                  href="/"
-                  className="block mt-2 px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700"
-                >
-                  Download PDF
-                </a>
               </div>
             </div>
           </div>

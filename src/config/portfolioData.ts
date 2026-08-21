@@ -5,20 +5,21 @@ export const PORTFOLIO_INFO: Portfolio = {
     createdAt: new Date().toISOString(),
     locale: "en-US",
     url: "https://satya00089.github.io/portfolio", // update if you have a custom domain
-    pdf: "/resume.pdf",
   },
   personal: {
-    name: "Martín St. John",
+    name: "Martín St.",
     title: "Game Developer",
     headline: "React · Python · FastAPI · IaC · Cloud",
     summary:
       "Senior Engineer with 7+ years of experience delivering enterprise-grade applications. Over the last 3 years I have focused on building production systems using Python (FastAPI) and React — designing APIs, building responsive frontends, and automating deployments with IaC. Experienced across AWS & Azure and comfortable owning full delivery from design to production.",
     // optional hero summary used in the site hero; keeps a concise, senior-level intro tuned to your data
     hero: {
-      summary:
-        "Senior Engineer & product-focused Full Stack developer (React, TypeScript, Python/FastAPI). I design resilient component systems, build production-grade APIs, and optimize for performance and accessibility — driving features from design through delivery on cloud platforms.",
+      summary: `I love building and improving player experiences, working with controllers, physics, and player feedback to turn ideas into the best experiences for players.
+      My work includes mobile, consoles, Steam, and online multiplayer games across a wide variety of genres.
+
+      My goal is to make the player feel what the design intends.`,
       // Independent from the complete Skills section below. Choose the labels and order shown in the hero.
-      mainSkills: ["Unity", "C#", "Online Multiplayer", "Lua"],
+      mainSkills: ["Unity", "C#", "Multiplayer", "Physics", "Lua", "Roblox"],
     },
     contact: {
       email: "satyasubudhi089@gmail.com",
