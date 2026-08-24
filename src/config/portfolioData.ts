@@ -14,8 +14,8 @@ export const PORTFOLIO_INFO: Portfolio = {
       "Senior Engineer with 7+ years of experience delivering enterprise-grade applications. Over the last 3 years I have focused on building production systems using Python (FastAPI) and React — designing APIs, building responsive frontends, and automating deployments with IaC. Experienced across AWS & Azure and comfortable owning full delivery from design to production.",
     // optional hero summary used in the site hero; keeps a concise, senior-level intro tuned to your data
     hero: {
-      summary: `I love building and improving player experiences, working with controllers, physics, and player feedback to turn ideas into the best experiences for players.
-      My work includes mobile, consoles, Steam, and online multiplayer games across a wide variety of genres.
+      summary: `I love building and improving player experiences, working with controllers, physics, and feedback to turn ideas into the best experiences for players.
+      My work includes mobile, Steam, and online multiplayer games across a wide variety of genres.
 
       My goal is to make the player feel what the design intends.`,
       // Independent from the complete Skills section below. Choose the labels and order shown in the hero.
@@ -410,33 +410,36 @@ export const PORTFOLIO_INFO: Portfolio = {
   ],
   projects: [
     {
-      id: "learn-algo",
-      title: "Unicorn Academy",
+      id: "unicorn-academy",
+      title: "Unicorn Academy: Friendship Adventures",
       description:
-        "Interactive visualizations that transform abstract concepts into intuitive understanding. Watch sorting, searching, and ML algorithms execute step-by-step.",
-      tags: ["Algorithms", "DSA", "ML", "AI", "Visualization", "Next.js"],
-      image:
-        "https://cdn.prod.website-files.com/66b4121db7e26055e5c96875/691ab91cfd3232e87dffb3b6_Academy%20copy.png",
-      href: "https://www.learn-algo.com",
-      links: [
+        "Open-world experience created for the Unicorn Academy series, featuring motion-controlled gameplay, from unicorn riding and movement to quests and minigames.",
+      tags: [
+        "Open World",
+        "Motion Controls",
+        "Optimization",
+        "Console",
+        "Unity",
+        "C#",
+        "Player Controls",
       ],
-      isUnderDevelopment: false,
+      image:
+        "https://cdn.prod.website-files.com/66b4121db7e26055e5c96875/6937891a3aed5cfc85a3db7d_Press%20Release%20Visual_v2%20s.png",
+      links: [
+        {
+          label: "Official Page",
+          url: "https://www.nexplayground.com/games/unicorn-academy-friendship-adventures",
+          icon: "FaGlobe",
+        },
+      ],
+      status: "released",
     },
     {
       id: "landing-zone-orchestrator",
       title: "Landing Zone Orchestrator",
       description:
         "A production-ready platform that transforms cloud infrastructure provisioning from manual IaC coding to an intuitive, form-driven workflow. Built with React, FastAPI, and MongoDB to generate validated Terraform templates for AWS, Azure, and GCP. Features include schema-driven form builder for VPC, Subnets, IAM, and networking resources, real-time Terraform code generation and validation, JWT-based authentication, MongoDB storage for projects and templates, and multi-cloud support.",
-      tags: [
-        "Terraform",
-        "IaC",
-        "React",
-        "FastAPI",
-        "MongoDB",
-        "AWS",
-        "Azure",
-        "Full Stack",
-      ],
+      tags: ["Tools", "UI/UX", "Backend", "Cloud"],
       image:
         "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGtuYjY1emtsZmNjMXp1czdrdXR5bXE5ZDJheHVvZjY1azZxYnJieiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qzImRjQVb2OUI84mTt/giphy.gif",
       href: "https://orchestrator.next-zen.dev",
@@ -447,14 +450,14 @@ export const PORTFOLIO_INFO: Portfolio = {
           icon: "SiGithub",
         },
       ],
-      isUnderDevelopment: true,
+      status: "in-development",
     },
     {
       id: "diagrammatic",
       title: "Diagrammatic",
       description:
         "Diagrammatic (System Design Playground): A component library and living documentation for a design system.",
-      tags: ["System Design", "AI & ML", "React"],
+      tags: ["Tools", "UI/UX", "Technical Art"],
       image:
         "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeTFnOGF3d3BodjFvY3NhanY5cnl5bmd4Z243aXB5M3hrOHg3d2tmeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WvzQektcJxs0oDFkHq/giphy.gif",
       href: "https://diagrammatic.next-zen.dev",
@@ -465,13 +468,14 @@ export const PORTFOLIO_INFO: Portfolio = {
           icon: "SiGithub",
         },
       ],
+      status: "technical-demo",
     },
     {
       id: "tic-tac-toe-ai",
       title: "Tic Tac Toe AI",
       description:
         "A minimal Tic-Tac-Toe AI game built with Next.js to understand the Minimax algorithm.",
-      tags: ["Next.js", "AI", "Game", "Minimax"],
+      tags: ["Gameplay", "Game AI", "2D", "Web"],
       image:
         "https://raw.githubusercontent.com/satya00089/tic-tac-toe/main/public/tic-tac-toe.png",
       href: "https://satya00089.github.io/tic-tac-toe/",
@@ -482,14 +486,14 @@ export const PORTFOLIO_INFO: Portfolio = {
           icon: "SiGithub",
         },
       ],
-      isUnderDevelopment: false,
+      status: "technical-demo",
     },
     {
       id: "mui-color-wheel",
       title: "MUI Color Wheel",
       description:
         "A Material-UI based color wheel component with real-time color picking.",
-      tags: ["React", "Material-UI", "NPM Package", "Storybook"],
+      tags: ["Tools", "UI/UX", "Technical Art"],
       image:
         "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTJxYjhmdTVjam41aWlzczZreGZ2eXc5eThjdDRpMXgxYzVuYTAzMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tWnCyw4rmoFY8CmhLV/giphy.gif",
       href: "https://mui-color-wheel.vercel.app/",
@@ -510,7 +514,7 @@ export const PORTFOLIO_INFO: Portfolio = {
           icon: "SiGithub",
         },
       ],
-      isUnderDevelopment: true,
+      status: "in-development",
     },
     {
       id: "alochona",
@@ -532,14 +536,15 @@ export const PORTFOLIO_INFO: Portfolio = {
           icon: "SiGithub",
         },
       ],
-      tags: ["Chatbot", "OpenAI", "Hugging Face", "Beginner Project"],
+      tags: ["AI Systems", "UI/UX", "Web"],
+      status: "prototype",
     },
     {
       id: "night-sky",
       title: "Night Skyline",
       description:
         "A breathtaking recreation of the city skyline under a starlit night sky, capturing the serene beauty and glowing atmosphere of the evening.",
-      tags: ["React", "CSS"],
+      tags: ["Technical Art", "VFX", "2D", "Web"],
       image:
         "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2RjaHAxY3N3enY0d3RldWVpczg2ZTNzMHhsY2dpam0yYnp6bWh2byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/P2jddT5c9g9OeHI17p/giphy.gif",
       href: "https://satya00089.github.io/night-sky",
@@ -555,7 +560,7 @@ export const PORTFOLIO_INFO: Portfolio = {
           icon: "SiGithub",
         },
       ],
-      isUnderDevelopment: true,
+      status: "in-development",
     },
   ],
   education: [
@@ -596,36 +601,71 @@ export const PORTFOLIO_INFO: Portfolio = {
 
 // ---------- SMALL HELPERS ----------
 export const tagColors: TagColors = {
-  React: "bg-blue-100 text-blue-800",
-  CSS: "bg-teal-100 text-teal-800",
-  CSS3: "bg-teal-100 text-teal-800",
-  Tailwind: "bg-teal-100 text-teal-800",
-  Stripe: "bg-purple-100 text-purple-800",
-  "Design System": "bg-yellow-100 text-yellow-800",
-  D3: "bg-amber-100 text-amber-800",
-  Realtime: "bg-green-100 text-green-800",
-  Storybook: "bg-pink-100 text-pink-800",
-  "NPM Package": "bg-red-100 text-red-800",
-  "Material-UI": "bg-indigo-100 text-indigo-800",
-  Chatbot: "bg-violet-100 text-violet-800",
-  OpenAI: "bg-gray-100 text-gray-800",
-  "Hugging Face": "bg-orange-100 text-orange-800",
-  Beginner: "bg-cyan-100 text-cyan-800",
-  "Beginner Project": "bg-cyan-100 text-cyan-800",
-  // Landing Zone Orchestrator tags
-  FastAPI: "bg-teal-500 text-white",
-  MongoDB: "bg-green-600 text-white",
-  Terraform: "bg-purple-600 text-white",
-  IaC: "bg-indigo-500 text-white",
-  AWS: "bg-orange-500 text-white",
-  Azure: "bg-blue-600 text-white",
-  GCP: "bg-red-600 text-white",
-  Algorithms: "bg-blue-500 text-blue-100",
-  DSA: "bg-purple-300 text-purple-900",
-  ML: "bg-blue-200 text-blue-800",
-  AI: "bg-gray-200 text-gray-800",
-  "AI & ML": "bg-amber-100 text-amber-900",
-  Visualization: "bg-orange-100 text-purple-900",
-  "Next.js": "bg-black text-white",
-  "Full Stack": "bg-gradient-to-r from-blue-500 to-purple-600 text-white",
+  Unity:
+    "border border-slate-300 bg-slate-100 text-slate-800 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200",
+  "Unreal Engine":
+    "border border-zinc-300 bg-zinc-100 text-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200",
+  Godot:
+    "border border-sky-300 bg-sky-100 text-sky-900 dark:border-sky-800 dark:bg-sky-950 dark:text-sky-200",
+  Roblox:
+    "border border-red-300 bg-red-100 text-red-900 dark:border-red-800 dark:bg-red-950 dark:text-red-200",
+  "C#":
+    "border border-violet-300 bg-violet-100 text-violet-800 dark:border-violet-800 dark:bg-violet-950 dark:text-violet-200",
+  "C++":
+    "border border-blue-300 bg-blue-100 text-blue-900 dark:border-blue-800 dark:bg-blue-950 dark:text-blue-200",
+  Lua: "border border-indigo-300 bg-indigo-100 text-indigo-900 dark:border-indigo-800 dark:bg-indigo-950 dark:text-indigo-200",
+  Gameplay:
+    "border border-orange-300 bg-orange-100 text-orange-800 dark:border-orange-800 dark:bg-orange-950 dark:text-orange-200",
+  "Game Systems":
+    "border border-amber-300 bg-amber-100 text-amber-900 dark:border-amber-800 dark:bg-amber-950 dark:text-amber-200",
+  "Motion Controls":
+    "border border-cyan-300 bg-cyan-100 text-cyan-900 dark:border-cyan-800 dark:bg-cyan-950 dark:text-cyan-200",
+  "Player Controls":
+    "border border-sky-300 bg-sky-100 text-sky-900 dark:border-sky-800 dark:bg-sky-950 dark:text-sky-200",
+  "Open World":
+    "border border-lime-300 bg-lime-100 text-lime-900 dark:border-lime-800 dark:bg-lime-950 dark:text-lime-200",
+  Physics:
+    "border border-indigo-300 bg-indigo-100 text-indigo-900 dark:border-indigo-800 dark:bg-indigo-950 dark:text-indigo-200",
+  "Game AI":
+    "border border-fuchsia-300 bg-fuchsia-100 text-fuchsia-900 dark:border-fuchsia-800 dark:bg-fuchsia-950 dark:text-fuchsia-200",
+  "AI Systems":
+    "border border-purple-300 bg-purple-100 text-purple-900 dark:border-purple-800 dark:bg-purple-950 dark:text-purple-200",
+  Multiplayer:
+    "border border-emerald-300 bg-emerald-100 text-emerald-900 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-200",
+  Networking:
+    "border border-teal-300 bg-teal-100 text-teal-900 dark:border-teal-800 dark:bg-teal-950 dark:text-teal-200",
+  "UI/UX":
+    "border border-pink-300 bg-pink-100 text-pink-900 dark:border-pink-800 dark:bg-pink-950 dark:text-pink-200",
+  Tools:
+    "border border-blue-300 bg-blue-100 text-blue-900 dark:border-blue-800 dark:bg-blue-950 dark:text-blue-200",
+  Backend:
+    "border border-stone-300 bg-stone-100 text-stone-900 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-200",
+  Cloud:
+    "border border-sky-300 bg-sky-100 text-sky-900 dark:border-sky-800 dark:bg-sky-950 dark:text-sky-200",
+  Optimization:
+    "border border-yellow-300 bg-yellow-100 text-yellow-900 dark:border-yellow-800 dark:bg-yellow-950 dark:text-yellow-200",
+  "Technical Art":
+    "border border-rose-300 bg-rose-100 text-rose-900 dark:border-rose-800 dark:bg-rose-950 dark:text-rose-200",
+  "Level Design":
+    "border border-amber-300 bg-amber-100 text-amber-900 dark:border-amber-800 dark:bg-amber-950 dark:text-amber-200",
+  Animation:
+    "border border-pink-300 bg-pink-100 text-pink-900 dark:border-pink-800 dark:bg-pink-950 dark:text-pink-200",
+  Shaders:
+    "border border-violet-300 bg-violet-100 text-violet-900 dark:border-violet-800 dark:bg-violet-950 dark:text-violet-200",
+  VFX:
+    "border border-purple-300 bg-purple-100 text-purple-900 dark:border-purple-800 dark:bg-purple-950 dark:text-purple-200",
+  Audio:
+    "border border-teal-300 bg-teal-100 text-teal-900 dark:border-teal-800 dark:bg-teal-950 dark:text-teal-200",
+  "Procedural Generation":
+    "border border-lime-300 bg-lime-100 text-lime-900 dark:border-lime-800 dark:bg-lime-950 dark:text-lime-200",
+  "2D":
+    "border border-green-300 bg-green-100 text-green-900 dark:border-green-800 dark:bg-green-950 dark:text-green-200",
+  "3D":
+    "border border-amber-300 bg-amber-100 text-amber-900 dark:border-amber-800 dark:bg-amber-950 dark:text-amber-200",
+  Console:
+    "border border-zinc-300 bg-zinc-100 text-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200",
+  PC: "border border-blue-300 bg-blue-100 text-blue-900 dark:border-blue-800 dark:bg-blue-950 dark:text-blue-200",
+  Mobile:
+    "border border-emerald-300 bg-emerald-100 text-emerald-900 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-200",
+  Web: "border border-cyan-300 bg-cyan-100 text-cyan-900 dark:border-cyan-800 dark:bg-cyan-950 dark:text-cyan-200",
 };

@@ -90,6 +90,12 @@ export type ProjectLink = {
   icon?: string; // optional icon name
 };
 
+export type ProjectStatus =
+  | "released"
+  | "in-development"
+  | "prototype"
+  | "technical-demo";
+
 export type Project = {
   id?: string;
   title: string;
@@ -101,7 +107,7 @@ export type Project = {
   links?: ProjectLink[]; // alternate links
   date?: DateRange | string;
   featured?: boolean;
-  isUnderDevelopment?: boolean;
+  status?: ProjectStatus; // one portfolio classification per project
 };
 
 export type Role = {

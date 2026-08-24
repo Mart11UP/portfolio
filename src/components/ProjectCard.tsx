@@ -7,6 +7,7 @@ import * as SiIcons from "react-icons/si";
 import * as FaIcons from "react-icons/fa";
 import { BsArrowUpRightCircleFill } from "react-icons/bs";
 import { CardContainer } from "./CardContainer";
+import { ProjectStatusBadge } from "./ProjectStatusBadge";
 
 export const ProjectCard: React.FC<{
   project: Project;
@@ -72,16 +73,20 @@ export const ProjectCard: React.FC<{
                 e.stopPropagation();
                 onOpen?.(project);
               }}
-              className="font-bold text-xl text-[var(--brand)] cursor-pointer"
+              className="block w-full cursor-pointer text-left text-xl font-bold text-[var(--brand)]"
             >
               {project.title}
             </button>
-            {project.isUnderDevelopment && (
-              <span className="text-xs text-[var(--muted)] pl-2">
-                Under Development
-              </span>
+            {project.status && (
+              <div className="mt-2">
+                <ProjectStatusBadge status={project.status} />
+              </div>
             )}
-            <p className="text-sm text-[var(--muted)] mt-1 line-clamp-2">
+            <p
+              className={`text-sm text-[var(--muted)] line-clamp-2 ${
+                project.status ? "mt-2" : "mt-1"
+              }`}
+            >
               {project.description}
             </p>
             <div className="mt-4 flex gap-3 flex-wrap text-[var(--muted)]">
@@ -125,7 +130,8 @@ export const ProjectCard: React.FC<{
                 <span
                   key={t}
                   className={`text-xs font-semibold px-2 py-1 rounded-full ${
-                    tagColors[t] || "bg-gray-100 text-gray-800"
+                    tagColors[t] ||
+                    "border border-gray-300 bg-gray-100 text-gray-800 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200"
                   }`}
                 >
                   {t}

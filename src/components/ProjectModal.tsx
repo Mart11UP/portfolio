@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as SiIcons from "react-icons/si";
 import * as FaIcons from "react-icons/fa";
+import { ProjectStatusBadge } from "./ProjectStatusBadge";
 import remarkGfm from "remark-gfm";
 import type { Project } from "../types/portfolio";
 import { tagColors } from "../config/portfolioData";
@@ -140,6 +141,11 @@ export const ProjectModal: React.FC<{
               <h3 className="text-xl font-bold text-[var(--brand)] mb-2">
                 {project.title}
               </h3>
+              {project.status && (
+                <div className="mb-3">
+                  <ProjectStatusBadge status={project.status} />
+                </div>
+              )}
 
               {/* Tabs (only if iframe allowed) */}
               {iframeAllowed && (
