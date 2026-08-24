@@ -417,8 +417,8 @@ export const PORTFOLIO_INFO: Portfolio = {
       tags: [
         "Open World",
         "Motion Controls",
-        "Optimization",
         "Console",
+        "Optimization",
         "Unity",
         "C#",
         "Player Controls",

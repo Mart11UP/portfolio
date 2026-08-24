@@ -252,7 +252,7 @@ export const About: React.FC = () => {
               <motion.div variants={item} className="mt-8 flex flex-wrap gap-3">
                 <a
                   href="#projects"
-                  className="inline-flex items-center rounded-lg border border-[var(--brand)] bg-[var(--brand)] px-5 py-3 text-sm font-bold text-[var(--brand-contrast)] shadow-[0_10px_28px_-14px_var(--brand)] transition duration-200 hover:-translate-y-0.5 hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand)]"
+                  className="inline-flex items-center rounded-lg border border-[var(--brand)] bg-[var(--brand)] px-5 py-3 text-base font-normal text-white shadow-[0_10px_28px_-14px_var(--brand)] transition duration-200 hover:-translate-y-0.5 hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand)]"
                   onClick={(e) => onNavClick(e, "#projects")}
                   onKeyDown={(e) => handleKeyActivation(e, "#projects")}
                 >
@@ -261,7 +261,7 @@ export const About: React.FC = () => {
 
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-2 rounded-md border border-border px-4 py-3 text-sm font-bold text-foreground hover:bg-muted"
+                  className="inline-flex items-center gap-2 rounded-md border border-border px-4 py-3 text-base font-normal text-foreground hover:bg-muted"
                   onClick={(e) => onNavClick(e, "#contact")}
                   onKeyDown={(e) => handleKeyActivation(e, "#contact")}
                 >
