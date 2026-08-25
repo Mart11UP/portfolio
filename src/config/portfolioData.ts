@@ -433,6 +433,34 @@ export const PORTFOLIO_INFO: Portfolio = {
         },
       ],
       status: "released",
+      details: {
+        showHeaderImage: true,
+        headerImageFit: "cover",
+        role: "Gameplay Programmer",
+        engine: "Unity",
+        platforms: ["Nex Playground"],
+        responsibilities: [
+          "Created and polished systems",
+          "Developed quests and minigames",
+          "Improved player feedback and responsiveness",
+        ],
+        outcome: "Released as part of the Nex Playground catalog.",
+        // The order of these blocks is the order shown in the details window.
+        // Images and animated GIFs use the same media block type.
+        content: [
+          { type: "facts" },
+          { type: "responsibilities" },
+          {
+            type: "media",
+            src: "https://cdn.prod.website-files.com/66b4121db7e26055e5c96875/691ab91cfd3232e87dffb3b6_Academy%20copy.png",
+            alt: "Unicorn Academy: Friendship Adventures promotional artwork",
+            caption:
+              "Unicorn Academy: Friendship Adventures on Nex Playground.",
+          },
+          { type: "challenges" },
+          { type: "outcome" },
+        ],
+      },
     },
     {
       id: "landing-zone-orchestrator",

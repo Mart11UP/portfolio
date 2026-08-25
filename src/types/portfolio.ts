@@ -96,6 +96,39 @@ export type ProjectStatus =
   | "prototype"
   | "technical-demo";
 
+export type ProjectDetailBlock =
+  | { type: "facts" }
+  | { type: "responsibilities"; heading?: string }
+  | { type: "challenges"; heading?: string }
+  | { type: "outcome"; heading?: string }
+  | { type: "text"; heading?: string; body: string }
+  | { type: "list"; heading?: string; items: string[] }
+  | {
+      type: "media";
+      src: string;
+      alt: string;
+      caption?: string;
+      href?: string;
+      fit?: "contain" | "cover";
+    };
+
+export type ProjectDetails = {
+  /** Set to false to hide the project's main image above the details. */
+  showHeaderImage?: boolean;
+  /** contain keeps a fixed frame, cover crops it, and natural grows to the image ratio. */
+  headerImageFit?: "contain" | "cover" | "natural";
+  role?: string;
+  engine?: string;
+  platforms?: string[];
+  duration?: string;
+  team?: string;
+  responsibilities?: string[];
+  challenges?: string[];
+  outcome?: string;
+  /** Ordered blocks control exactly where text, lists, images, and GIFs appear. */
+  content?: ProjectDetailBlock[];
+};
+
 export type Project = {
   id?: string;
   title: string;
@@ -108,6 +141,7 @@ export type Project = {
   date?: DateRange | string;
   featured?: boolean;
   status?: ProjectStatus; // one portfolio classification per project
+  details?: ProjectDetails;
 };
 
 export type Role = {

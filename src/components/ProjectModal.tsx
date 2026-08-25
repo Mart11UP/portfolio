@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as SiIcons from "react-icons/si";
 import * as FaIcons from "react-icons/fa";
 import { ProjectStatusBadge } from "./ProjectStatusBadge";
+import { ProjectDetailsContent } from "./ProjectDetailsContent";
 import remarkGfm from "remark-gfm";
 import type { Project } from "../types/portfolio";
 import { tagColors } from "../config/portfolioData";
@@ -61,7 +62,10 @@ export const ProjectModal: React.FC<{
   // Fetch GitHub README
   useEffect(() => {
     async function fetchReadme() {
-      if (!project) return;
+      if (!project || project.details) {
+        setReadme(null);
+        return;
+      }
       const githubLink = project.links?.find(
         (l) => l.label.toLowerCase() === "github",
       );
@@ -188,14 +192,24 @@ export const ProjectModal: React.FC<{
                       exit={{ opacity: 0, x: 20 }}
                       transition={{ duration: 0.3 }}
                     >
-                      {/* Project image */}
-                      {project.image && (
-                        <img
-                          src={project.image}
-                          alt={project.title}
-                          className="rounded-lg border border-[var(--border)] mb-4 w-full h-auto object-cover max-h-60"
-                        />
-                      )}
+                      {/* Optional project header image */}
+                      {project.image &&
+                        project.details?.showHeaderImage !== false && (
+                          <img
+                            src={project.image}
+                            alt={project.title}
+                            className={`mb-4 w-full rounded-lg border border-[var(--border)] bg-[var(--bg)] ${
+                              project.details?.headerImageFit === "natural"
+                                ? "h-auto"
+                                : `h-48 sm:h-60 ${
+                                    project.details?.headerImageFit ===
+                                    "contain"
+                                      ? "object-contain"
+                                      : "object-cover"
+                                  }`
+                            }`}
+                          />
+                        )}
                       {/* Description */}
                       <p className="text-sm text-[var(--text)] mb-4">
                         {project.description}
@@ -240,7 +254,8 @@ export const ProjectModal: React.FC<{
                           <span
                             key={t}
                             className={`text-xs font-semibold px-2 py-1 rounded-full ${
-                              tagColors[t] || "bg-gray-100 text-gray-800"
+                              tagColors[t] ||
+                              "border border-gray-300 bg-gray-100 text-gray-800 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200"
                             }`}
                           >
                             {t}
@@ -248,8 +263,12 @@ export const ProjectModal: React.FC<{
                         ))}
                       </div>
 
+                      {project.details && (
+                        <ProjectDetailsContent details={project.details} />
+                      )}
+
                       {/* README */}
-                      {readme && (
+                      {!project.details && readme && (
                         <div className="h-full overflow-auto rounded-md border border-[var(--border)] bg-[var(--surface)] mt-6">
                           <div
                             className="p-4 markdown-body"
