@@ -452,10 +452,33 @@ export const PORTFOLIO_INFO: Portfolio = {
           { type: "responsibilities" },
           {
             type: "media",
-            src: "https://cdn.prod.website-files.com/66b4121db7e26055e5c96875/691ab91cfd3232e87dffb3b6_Academy%20copy.png",
-            alt: "Unicorn Academy: Friendship Adventures promotional artwork",
+            src: "projects/unicorn-academy/screenshot.png",
+            alt: "Rider on a pink unicorn facing Unicorn Academy across a grassy landscape",
             caption:
-              "Unicorn Academy: Friendship Adventures on Nex Playground.",
+              "A look at the open world, with Unicorn Academy in the distance.",
+            fit: "contain",
+          },
+          {
+            type: "media",
+            src: "projects/unicorn-academy/race.gif",
+            alt: "Third-person view of a rider racing a unicorn toward a checkpoint",
+            caption: "Racing across the world in one of the game's unicorn races.",
+            fit: "contain",
+          },
+          {
+            type: "media",
+            src: "projects/unicorn-academy/winter.gif",
+            alt: "Snowy Mountain title appearing over an icy landscape with glaciers and snow-covered trees",
+            caption:
+              "Discovering Snowy Mountain, one of the world's explorable areas.",
+            fit: "contain",
+          },
+          {
+            type: "media",
+            src: "projects/unicorn-academy/snowball.gif",
+            alt: "Player marker and warning prompt during a snowball-dodging minigame among snow-covered crates",
+            caption: "Dodging snowballs in a Snowy Mountain minigame.",
+            fit: "contain",
           },
           { type: "challenges" },
           { type: "outcome" },
