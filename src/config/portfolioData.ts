@@ -421,7 +421,6 @@ export const PORTFOLIO_INFO: Portfolio = {
         "Optimization",
         "Unity",
         "C#",
-        "Player Controls",
       ],
       image:
         "https://cdn.prod.website-files.com/66b4121db7e26055e5c96875/6937891a3aed5cfc85a3db7d_Press%20Release%20Visual_v2%20s.png",
