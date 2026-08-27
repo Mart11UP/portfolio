@@ -22,10 +22,10 @@ export const PORTFOLIO_INFO: Portfolio = {
       mainSkills: ["Unity", "C#", "Multiplayer", "Physics", "Lua", "Roblox"],
     },
     contact: {
-      email: "satyasubudhi089@gmail.com",
-      phone: "+91 9937 446 070",
-      location: "Bangalore, India",
-      website: "https://satya00089.github.io/portfolio",
+      email: "martinst.johnclarke@gmail.com",
+      phone: "+52 462 227 6661",
+      location: "Jalisco, México",
+      website: "https://mart11up.github.io/portfolio/",
       socials: [
         {
           label: "LinkedIn",
@@ -444,19 +444,17 @@ export const PORTFOLIO_INFO: Portfolio = {
           "Developed quests and minigames",
           "Improved player feedback and responsiveness",
         ],
-        outcome: "Released as part of the Nex Playground catalog.",
+        outcome:
+          "Shipped for Nex Playground, with ongoing updates adding new features and explorable areas.",
         // The order of these blocks is the order shown in the details window.
         // Images and animated GIFs use the same media block type.
         content: [
           { type: "facts" },
           { type: "responsibilities" },
           {
-            type: "media",
-            src: "projects/unicorn-academy/screenshot.png",
-            alt: "Rider on a pink unicorn facing Unicorn Academy across a grassy landscape",
-            caption:
-              "A look at the open world, with Unicorn Academy in the distance.",
-            fit: "contain",
+            type: "text",
+            heading: "Optimization",
+            body: "Performance was a core constraint on Nex Playground's limited hardware. We profiled CPU, GPU, and memory throughout development, tuning scene complexity, assets, effects, and gameplay systems to keep the open world responsive without losing its visual identity.",
           },
           {
             type: "media",
@@ -466,12 +464,9 @@ export const PORTFOLIO_INFO: Portfolio = {
             fit: "contain",
           },
           {
-            type: "media",
-            src: "projects/unicorn-academy/winter.gif",
-            alt: "Snowy Mountain title appearing over an icy landscape with glaciers and snow-covered trees",
-            caption:
-              "Discovering Snowy Mountain, one of the world's explorable areas.",
-            fit: "contain",
+            type: "text",
+            heading: "Motion-Controlled Gameplay",
+            body: "Minigames and world interactions had to feel clear and responsive through body movement. I worked closely with game design to simplify each interaction and make feedback easy to read. For the snowball minigame, we refined movement detection and warning cues until players could understand threats and react naturally.",
           },
           {
             type: "media",
@@ -480,8 +475,15 @@ export const PORTFOLIO_INFO: Portfolio = {
             caption: "Dodging snowballs in a Snowy Mountain minigame.",
             fit: "contain",
           },
-          { type: "challenges" },
           { type: "outcome" },
+          {
+            type: "media",
+            src: "projects/unicorn-academy/winter.gif",
+            alt: "Snowy Mountain title appearing over an icy landscape with glaciers and snow-covered trees",
+            caption: "Area intro from the Snowy Mountain Update.",
+            fit: "contain",
+          },
+          { type: "challenges" },
         ],
       },
     },
