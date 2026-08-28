@@ -117,6 +117,8 @@ export type ProjectDetails = {
   showHeaderImage?: boolean;
   /** contain keeps a fixed frame, cover crops it, and natural grows to the image ratio. */
   headerImageFit?: "contain" | "cover" | "natural";
+  /** Static CSS blur radius in pixels. Omit or use 0 to keep the image sharp. */
+  headerImageBlur?: number;
   role?: string;
   engine?: string;
   platforms?: string[];

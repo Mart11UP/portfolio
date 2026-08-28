@@ -32,6 +32,11 @@ export const ProjectModal: React.FC<{
   const { scrollYProgress } = useScroll({ container: bodyRef });
 
   const FaLink = FaIcons["FaLink" as keyof typeof FaIcons];
+  const headerImageFit = project?.details?.headerImageFit ?? "cover";
+  const headerImageBlur = Math.max(
+    0,
+    project?.details?.headerImageBlur ?? 0,
+  );
 
   // Reset state when modal opens
   useEffect(() => {
@@ -195,20 +200,35 @@ export const ProjectModal: React.FC<{
                       {/* Optional project header image */}
                       {project.image &&
                         project.details?.showHeaderImage !== false && (
-                          <img
-                            src={project.image}
-                            alt={project.title}
-                            className={`mb-4 w-full rounded-lg border border-[var(--border)] bg-[var(--bg)] ${
-                              project.details?.headerImageFit === "natural"
-                                ? "h-auto"
-                                : `h-48 sm:h-60 ${
-                                    project.details?.headerImageFit ===
-                                    "contain"
-                                      ? "object-contain"
-                                      : "object-cover"
-                                  }`
+                          <div
+                            className={`mb-4 w-full overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--bg)] ${
+                              headerImageFit === "natural"
+                                ? ""
+                                : "h-48 sm:h-60"
                             }`}
-                          />
+                          >
+                            <img
+                              src={project.image}
+                              alt={project.title}
+                              className={`block w-full ${
+                                headerImageFit === "natural"
+                                  ? "h-auto"
+                                  : `h-full ${
+                                      headerImageFit === "contain"
+                                        ? "object-contain"
+                                        : "object-cover"
+                                    }`
+                              }`}
+                              style={
+                                headerImageBlur > 0
+                                  ? {
+                                      filter: `blur(${headerImageBlur}px)`,
+                                      transform: "scale(1.03)",
+                                    }
+                                  : undefined
+                              }
+                            />
+                          </div>
                         )}
                       {/* Description */}
                       <p className="text-sm text-[var(--text)] mb-4">

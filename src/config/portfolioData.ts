@@ -487,22 +487,50 @@ export const PORTFOLIO_INFO: Portfolio = {
       },
     },
     {
-      id: "landing-zone-orchestrator",
-      title: "Landing Zone Orchestrator",
+      id: "squishems",
+      title: "Squish'Ems - Drop and Pop!",
       description:
-        "A production-ready platform that transforms cloud infrastructure provisioning from manual IaC coding to an intuitive, form-driven workflow. Built with React, FastAPI, and MongoDB to generate validated Terraform templates for AWS, Azure, and GCP. Features include schema-driven form builder for VPC, Subnets, IAM, and networking resources, real-time Terraform code generation and validation, JWT-based authentication, MongoDB storage for projects and templates, and multi-cloud support.",
-      tags: ["Tools", "UI/UX", "Backend", "Cloud"],
+        "A mobile pachinko game where players collect squishy skins, play minigames, and use earned currency to unlock new maps.",
+      tags: ["UI/UX", "Game Economy", "Mobile", "Game Systems", "Unity", "C#"],
       image:
-        "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGtuYjY1emtsZmNjMXp1czdrdXR5bXE5ZDJheHVvZjY1azZxYnJieiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qzImRjQVb2OUI84mTt/giphy.gif",
-      href: "https://orchestrator.next-zen.dev",
+        "https://lh3.googleusercontent.com/Tlga3x4DbVYsd0aUAmsn-sQZ7pvmRfbz9LPLo_tUzIl36J2boSDGLrvFhCZi58JJ6GVdgIjfhs-8ABfYx0m9_E9NB-m12rV1mZFX=h200",
       links: [
         {
-          label: "GitHub",
-          url: "https://github.com/satya00089/landing-zone-orchestrator-ui",
-          icon: "SiGithub",
+          label: "App Store",
+          url: "https://apps.apple.com/mx/app/squishems-drop-and-pop/id6739646005",
+          icon: "SiAppstore",
+        },
+        {
+          label: "Google Play",
+          url: "https://play.google.com/store/apps/details?id=com.amberstudio.squishums&hl",
+          icon: "SiGoogleplay",
         },
       ],
-      status: "in-development",
+      status: "released",
+      details: {
+        showHeaderImage: true,
+        headerImageFit: "cover",
+        role: "Gameplay Programmer",
+        engine: "Unity",
+        platforms: ["iOS", "Android"],
+        responsibilities: [
+          "Developed and polished minigames and progression features",
+          "Built a queued notification system that presented rewards only at safe moments",
+          "Worked with game economy systems, including currencies, rewards, and progression",
+          "Designed reusable gameplay and UI systems that remained easy to extend",
+        ],
+        // The order of these blocks is the order shown in the details window.
+        // Images and animated GIFs use the same media block type.
+        content: [
+          { type: "facts" },
+          { type: "responsibilities" },
+          {
+            type: "text",
+            heading: "Reliable Reward Notifications",
+            body: "Rewards could trigger from several systems at once. I built a queue that held each popup until it was safe to display, preventing overlaps and timing conflicts.",
+          },
+        ],
+      },
     },
     {
       id: "diagrammatic",
@@ -670,6 +698,8 @@ export const tagColors: TagColors = {
     "border border-orange-300 bg-orange-100 text-orange-800 dark:border-orange-800 dark:bg-orange-950 dark:text-orange-200",
   "Game Systems":
     "border border-amber-300 bg-amber-100 text-amber-900 dark:border-amber-800 dark:bg-amber-950 dark:text-amber-200",
+  "Game Economy":
+    "border border-green-300 bg-green-100 text-green-900 dark:border-green-700 dark:bg-green-950 dark:text-green-200",
   "Motion Controls":
     "border border-cyan-300 bg-cyan-100 text-cyan-900 dark:border-cyan-800 dark:bg-cyan-950 dark:text-cyan-200",
   "Player Controls":
