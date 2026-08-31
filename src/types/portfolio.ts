@@ -110,6 +110,18 @@ export type ProjectDetailBlock =
       caption?: string;
       href?: string;
       fit?: "contain" | "cover";
+    }
+  | {
+      type: "mobile-gallery";
+      heading?: string;
+      images: {
+        /** Full-size image used by the expanded viewer. */
+        src: string;
+        /** Optional smaller image used in the scrolling gallery. */
+        thumbnailSrc?: string;
+        alt: string;
+        caption?: string;
+      }[];
     };
 
 export type ProjectDetails = {

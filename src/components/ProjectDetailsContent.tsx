@@ -1,4 +1,7 @@
+import { useEffect, useRef, useState } from "react";
 import type { FC, ReactNode } from "react";
+import { createPortal } from "react-dom";
+import { ChevronLeft, ChevronRight, Expand, X } from "lucide-react";
 import type {
   ProjectDetailBlock,
   ProjectDetails,
@@ -112,6 +115,194 @@ const DetailMedia: FC<{
   );
 };
 
+const DetailMobileGallery: FC<{
+  block: Extract<ProjectDetailBlock, { type: "mobile-gallery" }>;
+}> = ({ block }) => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const lightboxRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const openerRef = useRef<HTMLButtonElement | null>(null);
+  const isOpen = activeIndex !== null;
+  const hasMultipleImages = block.images.length > 1;
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeButtonRef.current?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setActiveIndex(null);
+      } else if (event.key === "Tab") {
+        const buttons =
+          lightboxRef.current?.querySelectorAll<HTMLButtonElement>(
+            "button:not([disabled])",
+          );
+        if (!buttons?.length) return;
+
+        const firstButton = buttons[0];
+        const lastButton = buttons[buttons.length - 1];
+        if (event.shiftKey && document.activeElement === firstButton) {
+          event.preventDefault();
+          lastButton.focus();
+        } else if (!event.shiftKey && document.activeElement === lastButton) {
+          event.preventDefault();
+          firstButton.focus();
+        }
+      } else if (event.key === "ArrowLeft" && hasMultipleImages) {
+        setActiveIndex((currentIndex) => {
+          if (currentIndex === null) return null;
+          return (currentIndex - 1 + block.images.length) % block.images.length;
+        });
+      } else if (event.key === "ArrowRight" && hasMultipleImages) {
+        setActiveIndex((currentIndex) => {
+          if (currentIndex === null) return null;
+          return (currentIndex + 1) % block.images.length;
+        });
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+      openerRef.current?.focus();
+    };
+  }, [block.images.length, hasMultipleImages, isOpen]);
+
+  if (!block.images.length) return null;
+
+  const displayIndex = activeIndex ?? 0;
+  const activeImage = activeIndex === null ? null : block.images[displayIndex];
+
+  const openImage = (index: number, opener: HTMLButtonElement) => {
+    openerRef.current = opener;
+    setActiveIndex(index);
+  };
+
+  const showPrevious = () => {
+    setActiveIndex((currentIndex) => {
+      if (currentIndex === null) return null;
+      return (currentIndex - 1 + block.images.length) % block.images.length;
+    });
+  };
+
+  const showNext = () => {
+    setActiveIndex((currentIndex) => {
+      if (currentIndex === null) return null;
+      return (currentIndex + 1) % block.images.length;
+    });
+  };
+
+  return (
+    <section>
+      {block.heading && <SectionHeading>{block.heading}</SectionHeading>}
+      <div
+        role="region"
+        aria-label={block.heading ?? "Mobile screenshots"}
+        className="flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain pb-4 pr-8"
+      >
+        {block.images.map((image, index) => (
+          <figure
+            key={`${image.src}-${index}`}
+            className="w-[min(72vw,14rem)] shrink-0 snap-start"
+          >
+            <button
+              type="button"
+              onClick={(event) => openImage(index, event.currentTarget)}
+              className="group relative block w-full cursor-zoom-in overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg)] text-left shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand)]"
+              aria-label={`Expand screenshot ${index + 1} of ${block.images.length}: ${image.alt}`}
+            >
+              <img
+                src={resolveMediaPath(image.thumbnailSrc ?? image.src)}
+                alt={image.alt}
+                loading="lazy"
+                decoding="async"
+                className="aspect-[230/498] w-full object-contain"
+              />
+              <span className="absolute right-2 top-2 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/25 bg-black/65 text-white shadow-sm transition group-hover:bg-black/80 group-focus-visible:bg-black/80">
+                <Expand aria-hidden="true" className="h-4 w-4" />
+              </span>
+            </button>
+            {image.caption && (
+              <figcaption className="mt-2 text-xs leading-relaxed text-[var(--muted)] opacity-75">
+                {image.caption}
+              </figcaption>
+            )}
+          </figure>
+        ))}
+      </div>
+
+      {activeImage &&
+        createPortal(
+          <div
+            ref={lightboxRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Screenshot ${displayIndex + 1} of ${block.images.length}`}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-3 backdrop-blur-sm sm:p-6"
+          >
+            <div
+              className="relative flex h-full w-full flex-col items-center justify-center"
+              onMouseDown={(event) => {
+                if (event.target === event.currentTarget) setActiveIndex(null);
+              }}
+            >
+              <button
+                ref={closeButtonRef}
+                type="button"
+                onClick={() => setActiveIndex(null)}
+                className="absolute right-0 top-0 z-10 inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                aria-label="Close screenshot viewer"
+              >
+                <X aria-hidden="true" className="h-6 w-6" />
+              </button>
+
+              {hasMultipleImages && (
+                <button
+                  type="button"
+                  onClick={showPrevious}
+                  className="absolute left-0 z-10 inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  aria-label="Show previous screenshot"
+                >
+                  <ChevronLeft aria-hidden="true" className="h-7 w-7" />
+                </button>
+              )}
+
+              <img
+                src={resolveMediaPath(activeImage.src)}
+                alt={activeImage.alt}
+                className="max-h-[calc(100vh-7rem)] max-w-[calc(100vw-5rem)] object-contain sm:max-w-[calc(100vw-9rem)]"
+              />
+
+              {hasMultipleImages && (
+                <button
+                  type="button"
+                  onClick={showNext}
+                  className="absolute right-0 z-10 inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  aria-label="Show next screenshot"
+                >
+                  <ChevronRight aria-hidden="true" className="h-7 w-7" />
+                </button>
+              )}
+
+              <div className="mt-3 min-h-10 text-center text-sm text-white/80">
+                {activeImage.caption && <p>{activeImage.caption}</p>}
+                <p className="mt-1 text-xs text-white/55">
+                  {displayIndex + 1} / {block.images.length}
+                </p>
+              </div>
+            </div>
+          </div>,
+          document.body,
+        )}
+    </section>
+  );
+};
+
 export const ProjectDetailsContent: FC<{ details: ProjectDetails }> = ({
   details,
 }) => {
@@ -194,6 +385,8 @@ export const ProjectDetailsContent: FC<{ details: ProjectDetails }> = ({
             );
           case "media":
             return <DetailMedia key={key} block={block} />;
+          case "mobile-gallery":
+            return <DetailMobileGallery key={key} block={block} />;
         }
       })}
     </section>

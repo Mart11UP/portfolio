@@ -493,7 +493,7 @@ export const PORTFOLIO_INFO: Portfolio = {
         "A mobile pachinko game where players collect squishy skins, play minigames, and use earned currency to unlock new maps.",
       tags: ["UI/UX", "Game Economy", "Mobile", "Game Systems", "Unity", "C#"],
       image:
-        "https://lh3.googleusercontent.com/Tlga3x4DbVYsd0aUAmsn-sQZ7pvmRfbz9LPLo_tUzIl36J2boSDGLrvFhCZi58JJ6GVdgIjfhs-8ABfYx0m9_E9NB-m12rV1mZFX=h200",
+        "projects/squishems/squishems.png",
       links: [
         {
           label: "App Store",
@@ -520,7 +520,7 @@ export const PORTFOLIO_INFO: Portfolio = {
           "Designed reusable gameplay and UI systems that remained easy to extend",
         ],
         // The order of these blocks is the order shown in the details window.
-        // Images and animated GIFs use the same media block type.
+        // Use media for landscape assets and mobile-gallery for portrait captures.
         content: [
           { type: "facts" },
           { type: "responsibilities" },
@@ -529,17 +529,44 @@ export const PORTFOLIO_INFO: Portfolio = {
             heading: "Reliable Reward Notifications",
             body: "Rewards could trigger from several systems at once. I built a queue that held each popup until it was safe to display, preventing overlaps and timing conflicts.",
           },
+          {
+            type: "mobile-gallery",
+            heading: "Gameplay Screenshots",
+            images: [
+              {
+                src: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/f7/ad/d8/f7add8c4-0177-2427-03a4-6f7002a356ae/a.jpg/1290x2796bb.webp",
+                thumbnailSrc:
+                  "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/f7/ad/d8/f7add8c4-0177-2427-03a4-6f7002a356ae/a.jpg/460x996bb.webp",
+                alt: "The Mexico's pachinko stage",
+                caption: "The Mexico's pachinko stage.",
+              },
+              {
+                src: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/09/18/59/091859bb-c28e-9c4f-2818-065acf3458b2/b.jpg/1290x2796bb.webp",
+                thumbnailSrc:
+                  "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/09/18/59/091859bb-c28e-9c4f-2818-065acf3458b2/b.jpg/460x996bb.webp",
+                alt: "Squish'Ems character running through a city minigame",
+                caption: "One of the game's action minigames.",
+              },
+              {
+                src: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/01/6a/d6/016ad6a6-c772-2927-5971-b8a3590ea56e/c.jpg/1290x2796bb.webp",
+                thumbnailSrc:
+                  "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/01/6a/d6/016ad6a6-c772-2927-5971-b8a3590ea56e/c.jpg/460x996bb.webp",
+                alt: "Stage building screen.",
+                caption: "Stage building screen.",
+              },
+            ],
+          },
         ],
       },
     },
     {
-      id: "diagrammatic",
-      title: "Diagrammatic",
+      id: "magic-environment-generator",
+      title: "Magic Environment Generator",
       description:
-        "Diagrammatic (System Design Playground): A component library and living documentation for a design system.",
-      tags: ["Tools", "UI/UX", "Technical Art"],
+        "A procedural 2D environmet generator using my own Wave Function Collapse algorithm approach to generate coherent environments by connecting tiles with certain rules.",
+      tags: ["Procedural Generation", "C#", "Optimization", "Technical Art", "Unity"],
       image:
-        "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeTFnOGF3d3BodjFvY3NhanY5cnl5bmd4Z243aXB5M3hrOHg3d2tmeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WvzQektcJxs0oDFkHq/giphy.gif",
+        "public/projects/magic-environment-generator/single-random-generation.gif",
       href: "https://diagrammatic.next-zen.dev",
       links: [
         {
@@ -549,24 +576,39 @@ export const PORTFOLIO_INFO: Portfolio = {
         },
       ],
       status: "technical-demo",
+      details: {
+        showHeaderImage: true,
+        headerImageFit: "cover",
+        role: "Solo Game Developer",
+        engine: "Unity",
+        platforms: ["PC"],
+        responsibilities: [
+          
+        ],
+        // The order of these blocks is the order shown in the details window.
+        // Use media for landscape assets and mobile-gallery for portrait captures.
+        content: [
+          { type: "facts" },
+          { type: "responsibilities" },
+        ],
+      },
     },
     {
-      id: "tic-tac-toe-ai",
-      title: "Tic Tac Toe AI",
+      id: "master-of-the-ball",
+      title: "Master of the Ball",
       description:
         "A minimal Tic-Tac-Toe AI game built with Next.js to understand the Minimax algorithm.",
-      tags: ["Gameplay", "Game AI", "2D", "Web"],
+      tags: ["Gameplay", "Game AI" , "Player Controls", "Physics", "3D", "Web"],
       image:
-        "https://raw.githubusercontent.com/satya00089/tic-tac-toe/main/public/tic-tac-toe.png",
-      href: "https://satya00089.github.io/tic-tac-toe/",
+        "https://tr.rbxcdn.com/180DAY-ddb41a1a1c2cb110a365ad966173275b/768/432/Image/Webp/noFilter",
       links: [
         {
-          label: "GitHub",
-          url: "https://github.com/satya00089/tic-tac-toe",
-          icon: "SiGithub",
+          label: "Roblox",
+          url: "https://www.roblox.com/en/games/132001757579982/Maestro-de-la-Pelota",
+          icon: "SiRoblox",
         },
       ],
-      status: "technical-demo",
+      status: "released",
     },
     {
       id: "mui-color-wheel",
