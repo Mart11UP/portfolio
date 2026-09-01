@@ -566,7 +566,7 @@ export const PORTFOLIO_INFO: Portfolio = {
         "A procedural 2D environmet generator using my own Wave Function Collapse algorithm approach to generate coherent environments by connecting tiles with certain rules.",
       tags: ["Procedural Generation", "C#", "Optimization", "Technical Art", "Unity"],
       image:
-        "public/projects/magic-environment-generator/single-random-generation.gif",
+        "projects/magic-environment-generator/single-random-generation.gif",
       href: "https://diagrammatic.next-zen.dev",
       links: [
         {
