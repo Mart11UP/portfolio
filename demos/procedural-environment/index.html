@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="An interactive demo of the Magic Environment Creator procedural generation system."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&family=Google+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="TemplateData/favicon.png" />
+    <link rel="stylesheet" href="TemplateData/style.css" />
+    <title>Magic Environment Creator | Mart 11UP</title>
+    <script>
+      try {
+        const savedTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = savedTheme || (prefersDark ? "dark" : "light");
+      } catch {
+        document.documentElement.dataset.theme = "dark";
+      }
+    </script>
+  </head>
+  <body>
+    <header class="demo-header">
+      <div class="header-inner">
+        <a class="brand" href="../../index.html" aria-label="Mart11UP portfolio">
+          Mart<span>11<small>UP</small></span>
+        </a>
+        <a class="back-link" href="../../index.html">
+          <span aria-hidden="true">←</span>
+          Back to portfolio
+        </a>
+      </div>
+    </header>
+
+    <main class="demo-main">
+      <section class="demo-intro" aria-labelledby="demo-title">
+        <p class="eyebrow">Interactive Demo</p>
+        <h1 id="demo-title">Magic Environment Creator</h1>
+      </section>
+
+      <section class="unity-panel" aria-label="Magic Environment Creator game demo">
+        <div id="unity-container" class="unity-desktop">
+          <canvas id="unity-canvas" width="960" height="600" tabindex="-1"></canvas>
+          <div id="unity-loading-bar" role="status" aria-label="Loading demo">
+            <div id="unity-logo">Loading demo</div>
+            <div id="unity-progress-bar-empty">
+              <div id="unity-progress-bar-full"></div>
+            </div>
+          </div>
+          <div id="unity-warning"></div>
+          <div id="unity-footer">
+            <p class="demo-description">
+              Collapse cells manually, erase generated tiles, or paint grass and water while the generator completes the connections.
+            </p>
+            <button id="unity-fullscreen-button" type="button" aria-label="Open demo in fullscreen"></button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var warningBanner = document.querySelector("#unity-warning");
+
+      function unityShowBanner(msg, type) {
+        function updateBannerVisibility() {
+          warningBanner.style.display = warningBanner.children.length ? "block" : "none";
+        }
+        var div = document.createElement("div");
+        div.textContent = msg;
+        warningBanner.appendChild(div);
+        div.className = type === "error" ? "warning-error" : "warning-message";
+        if (type !== "error") {
+          setTimeout(function () {
+            warningBanner.removeChild(div);
+            updateBannerVisibility();
+          }, 5000);
+        }
+        updateBannerVisibility();
+      }
+
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/demo.loader.js";
+      var config = {
+        dataUrl: buildUrl + "/demo.data",
+        frameworkUrl: buildUrl + "/demo.framework.js",
+        codeUrl: buildUrl + "/demo.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Mart 11UP",
+        productName: "Magic Environment Creator",
+        productVersion: "1.0",
+        showBanner: unityShowBanner,
+      };
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        container.className = "unity-mobile";
+        canvas.className = "unity-mobile";
+        config.devicePixelRatio = 1;
+      } else {
+        canvas.style.width = "960px";
+        canvas.style.height = "600px";
+      }
+
+      loadingBar.style.display = "block";
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = function () {
+        createUnityInstance(canvas, config, function (progress) {
+          progressBarFull.style.width = 100 * progress + "%";
+        })
+          .then(function (unityInstance) {
+            loadingBar.style.display = "none";
+            fullscreenButton.onclick = function () {
+              unityInstance.SetFullscreen(1);
+            };
+          })
+          .catch(function (message) {
+            unityShowBanner(message, "error");
+          });
+      };
+
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>
