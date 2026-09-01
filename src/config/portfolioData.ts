@@ -561,7 +561,7 @@ export const PORTFOLIO_INFO: Portfolio = {
     },
     {
       id: "magic-environment-generator",
-      title: "Procedural Environment Generator",
+      title: "Magic Environment Creator",
       description:
         "A procedural 2D environment generator built around a custom approach to Wave Function Collapse. It creates coherent environments by connecting tiles according to compatibility rules.",
       tags: ["Procedural Generation", "C#", "Optimization", "Technical Art", "Unity"],
@@ -571,7 +571,7 @@ export const PORTFOLIO_INFO: Portfolio = {
         {
           label: "Play Demo",
           url: "demos/procedural-environment/index.html",
-          icon: "FaPlay",
+          icon: "FaGamepad",
         },
       ],
       status: "technical-demo",
