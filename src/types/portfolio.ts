@@ -102,6 +102,17 @@ export type ProjectDetailBlock =
   | { type: "challenges"; heading?: string }
   | { type: "outcome"; heading?: string }
   | { type: "text"; heading?: string; body: string }
+  | {
+      type: "text-media";
+      heading?: string;
+      body: string;
+      media: {
+        src: string;
+        alt: string;
+        caption?: string;
+        fit?: "contain" | "cover";
+      };
+    }
   | { type: "list"; heading?: string; items: string[] }
   | {
       type: "media";

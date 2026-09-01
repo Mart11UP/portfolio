@@ -115,6 +115,36 @@ const DetailMedia: FC<{
   );
 };
 
+const DetailTextMedia: FC<{
+  block: Extract<ProjectDetailBlock, { type: "text-media" }>;
+}> = ({ block }) => (
+  <section className="grid gap-5 md:grid-cols-[minmax(0,3fr)_minmax(15rem,2fr)] md:items-center">
+    <div>
+      {block.heading && <SectionHeading>{block.heading}</SectionHeading>}
+      <p className="whitespace-pre-line text-sm leading-relaxed text-[var(--text)]">
+        {block.body}
+      </p>
+    </div>
+
+    <figure className="mx-auto w-full max-w-sm">
+      <img
+        src={resolveMediaPath(block.media.src)}
+        alt={block.media.alt}
+        loading="lazy"
+        decoding="async"
+        className={`max-h-[18rem] w-full rounded-lg border border-[var(--border)] bg-[var(--bg)] ${
+          block.media.fit === "cover" ? "object-cover" : "object-contain"
+        }`}
+      />
+      {block.media.caption && (
+        <figcaption className="mt-2 text-xs leading-relaxed text-[var(--muted)] opacity-75">
+          {block.media.caption}
+        </figcaption>
+      )}
+    </figure>
+  </section>
+);
+
 const DetailMobileGallery: FC<{
   block: Extract<ProjectDetailBlock, { type: "mobile-gallery" }>;
 }> = ({ block }) => {
@@ -375,6 +405,8 @@ export const ProjectDetailsContent: FC<{ details: ProjectDetails }> = ({
                 </p>
               </section>
             );
+          case "text-media":
+            return <DetailTextMedia key={key} block={block} />;
           case "list":
             return (
               <DetailList

@@ -561,18 +561,17 @@ export const PORTFOLIO_INFO: Portfolio = {
     },
     {
       id: "magic-environment-generator",
-      title: "Magic Environment Generator",
+      title: "Procedural Environment Generator",
       description:
-        "A procedural 2D environmet generator using my own Wave Function Collapse algorithm approach to generate coherent environments by connecting tiles with certain rules.",
+        "A procedural 2D environment generator built around a custom approach to Wave Function Collapse. It creates coherent environments by connecting tiles according to compatibility rules.",
       tags: ["Procedural Generation", "C#", "Optimization", "Technical Art", "Unity"],
       image:
-        "projects/magic-environment-generator/single-random-generation.gif",
-      href: "https://diagrammatic.next-zen.dev",
+        "projects/magic-environment-generator/single-random-generation_color_correction.gif",
       links: [
         {
-          label: "GitHub",
-          url: "https://github.com/satya00089/diagrammatic",
-          icon: "SiGithub",
+          label: "Play Demo",
+          url: "demos/procedural-environment/index.html",
+          icon: "FaPlay",
         },
       ],
       status: "technical-demo",
@@ -583,13 +582,48 @@ export const PORTFOLIO_INFO: Portfolio = {
         engine: "Unity",
         platforms: ["PC"],
         responsibilities: [
-          
+          "Designed and implemented a custom approach to Wave Function Collapse",
+          "Built an interactive technical demo that helps users understand how the algorithm behaves",
+          "Created the project's pixel art assets",
         ],
         // The order of these blocks is the order shown in the details window.
         // Use media for landscape assets and mobile-gallery for portrait captures.
         content: [
           { type: "facts" },
           { type: "responsibilities" },
+          {
+            type: "text-media",
+            heading: "How It Works in a Nutshell",
+            body: "The algorithm starts with an empty grid, with every tile option available in each cell. It chooses a cell and “collapses” it into one option.\n\nThat choice removes impossible options from nearby cells. For example, grass cannot connect directly to water, so adjacent water options are discarded. The change keeps propagating, then the algorithm collapses the cell with the fewest options.\n\nIn short: choose a cell → collapse it → propagate the result.",
+            media: {
+              src: "projects/magic-environment-generator/behavior.gif",
+              alt: "Grid cells updating as a tile is selected and its constraints propagate to nearby cells",
+              caption: "Choosing a cell, collapsing it, and propagating its effect.",
+              fit: "contain",
+            },
+          },
+          {
+            type: "text-media",
+            heading: "Fallback Strategy",
+            body: "Propagation can sometimes leave a cell with zero options, making the grid impossible to complete. Instead of restarting everything, I reset only the nearby uncollapsed cells. This simple fallback proved reliable and lets the generator finish consistently.",
+            media: {
+              src: "projects/magic-environment-generator/fallback.gif",
+              alt: "A section of the procedural environment resetting after the generator reaches an impossible combination",
+              caption: "Resetting a local area instead of restarting the entire grid.",
+              fit: "contain",
+            },
+          },
+          {
+            type: "text-media",
+            heading: "Interactive Demo",
+            body: "I also built controls that let users interact with the generator and see how it works. They can collapse or erase cells manually, or paint a terrain type such as water or grass. Painting chooses the terrain category, while the generator selects a compatible tile variation and completes the surrounding environment.",
+            media: {
+              src: "https://cdna.artstation.com/p/assets/images/images/086/508/860/original/martin-st-john-clarke-bideau-river.gif?1743382746",
+              alt: "Interactive controls being used to paint a river while the generator fills in compatible water tiles",
+              caption: "Painting a river while the generator chooses compatible water tiles.",
+              fit: "contain",
+            },
+          },
         ],
       },
     },
@@ -599,8 +633,7 @@ export const PORTFOLIO_INFO: Portfolio = {
       description:
         "A minimal Tic-Tac-Toe AI game built with Next.js to understand the Minimax algorithm.",
       tags: ["Gameplay", "Game AI" , "Player Controls", "Physics", "3D", "Web"],
-      image:
-        "https://tr.rbxcdn.com/180DAY-ddb41a1a1c2cb110a365ad966173275b/768/432/Image/Webp/noFilter",
+      image: "projects/master-of-the-ball/storefront-thumbnail.png",
       links: [
         {
           label: "Roblox",
