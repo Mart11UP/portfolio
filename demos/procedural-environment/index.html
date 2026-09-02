@@ -47,14 +47,24 @@
 
       <section class="unity-panel" aria-label="Magic Environment Creator game demo">
         <div id="unity-container" class="unity-desktop">
-          <canvas id="unity-canvas" width="960" height="600" tabindex="-1"></canvas>
-          <div id="unity-loading-bar" role="status" aria-label="Loading demo">
-            <div id="unity-logo">Loading demo</div>
-            <div id="unity-progress-bar-empty">
-              <div id="unity-progress-bar-full"></div>
+          <div id="orientation-prompt" class="orientation-prompt" role="status" hidden>
+            <div>
+              <strong>Landscape works best</strong>
+              <span>For a larger view, unlock rotation and turn your phone.</span>
             </div>
+            <button id="continue-portrait-button" type="button">Continue in portrait</button>
           </div>
-          <div id="unity-warning"></div>
+          <div id="unity-stage">
+            <canvas id="unity-canvas" width="960" height="540" tabindex="-1"></canvas>
+            <div id="unity-loading-bar" role="status" aria-label="Loading demo">
+              <div id="unity-logo">Loading demo</div>
+              <div id="unity-progress-bar-empty">
+                <div id="unity-progress-bar-full"></div>
+              </div>
+            </div>
+            <div id="unity-warning"></div>
+            <button id="unity-fullscreen-exit-button" type="button" aria-label="Exit fullscreen"></button>
+          </div>
           <div id="unity-footer">
             <p class="demo-description">
               Collapse cells manually, erase generated tiles, or paint grass and water while the generator completes the connections.
@@ -67,11 +77,18 @@
 
     <script>
       var container = document.querySelector("#unity-container");
+      var stage = document.querySelector("#unity-stage");
       var canvas = document.querySelector("#unity-canvas");
       var loadingBar = document.querySelector("#unity-loading-bar");
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var fullscreenExitButton = document.querySelector("#unity-fullscreen-exit-button");
       var warningBanner = document.querySelector("#unity-warning");
+      var orientationPrompt = document.querySelector("#orientation-prompt");
+      var continuePortraitButton = document.querySelector("#continue-portrait-button");
+      var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && window.matchMedia("(max-width: 1024px)").matches);
+      var portraitDismissed = false;
+      var portraitMediaQuery = window.matchMedia("(orientation: portrait)");
 
       function unityShowBanner(msg, type) {
         function updateBannerVisibility() {
@@ -90,6 +107,49 @@
         updateBannerVisibility();
       }
 
+      function updateOrientationPrompt() {
+        orientationPrompt.hidden = !isMobile || !portraitMediaQuery.matches || portraitDismissed;
+      }
+
+      function enterDemoFullscreen() {
+        var requestFullscreen = stage.requestFullscreen || stage.webkitRequestFullscreen;
+        if (!requestFullscreen) {
+          unityShowBanner("Fullscreen is not available in this browser.", "warning");
+          return;
+        }
+
+        try {
+          var fullscreenRequest = requestFullscreen.call(stage);
+          if (fullscreenRequest && fullscreenRequest.catch) {
+            fullscreenRequest.catch(function () {
+              unityShowBanner("Fullscreen could not be opened in this browser.", "warning");
+            });
+          }
+        } catch {
+          unityShowBanner("Fullscreen could not be opened in this browser.", "warning");
+        }
+      }
+
+      function exitDemoFullscreen() {
+        var exitFullscreen = document.exitFullscreen || document.webkitExitFullscreen;
+        if (exitFullscreen) {
+          exitFullscreen.call(document);
+        }
+      }
+
+      continuePortraitButton.onclick = function () {
+        portraitDismissed = true;
+        updateOrientationPrompt();
+        canvas.focus();
+      };
+      fullscreenExitButton.onclick = exitDemoFullscreen;
+      if (portraitMediaQuery.addEventListener) {
+        portraitMediaQuery.addEventListener("change", updateOrientationPrompt);
+      } else {
+        portraitMediaQuery.addListener(updateOrientationPrompt);
+      }
+      updateOrientationPrompt();
+
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/demo.loader.js";
       var config = {
@@ -103,13 +163,13 @@
         showBanner: unityShowBanner,
       };
 
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      if (isMobile) {
         container.className = "unity-mobile";
         canvas.className = "unity-mobile";
         config.devicePixelRatio = 1;
       } else {
         canvas.style.width = "960px";
-        canvas.style.height = "600px";
+        canvas.style.height = "540px";
       }
 
       loadingBar.style.display = "block";
@@ -120,11 +180,9 @@
         createUnityInstance(canvas, config, function (progress) {
           progressBarFull.style.width = 100 * progress + "%";
         })
-          .then(function (unityInstance) {
+          .then(function () {
             loadingBar.style.display = "none";
-            fullscreenButton.onclick = function () {
-              unityInstance.SetFullscreen(1);
-            };
+            fullscreenButton.onclick = enterDemoFullscreen;
           })
           .catch(function (message) {
             unityShowBanner(message, "error");
