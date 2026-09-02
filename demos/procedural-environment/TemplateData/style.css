@@ -106,7 +106,6 @@ a {
 
 .back-link:focus-visible,
 #unity-fullscreen-button:focus-visible,
-#unity-fullscreen-exit-button:focus-visible,
 #continue-portrait-button:focus-visible {
   outline: 2px solid var(--brand);
   outline-offset: 3px;
@@ -179,20 +178,29 @@ h1 {
 }
 
 #unity-stage:fullscreen,
-#unity-stage:-webkit-full-screen {
-  display: grid;
-  width: 100vw;
-  height: 100vh;
+#unity-stage:-webkit-full-screen,
+#unity-stage.fullscreen-active {
+  position: fixed;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
   max-width: none;
-  place-items: center;
+  overflow: hidden;
   border-radius: 0;
   background: #000000;
 }
 
 #unity-stage:fullscreen #unity-canvas,
-#unity-stage:-webkit-full-screen #unity-canvas {
-  width: min(100vw, 177.7778vh) !important;
+#unity-stage:-webkit-full-screen #unity-canvas,
+#unity-stage.fullscreen-active #unity-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
   height: auto !important;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
   border-radius: 0;
 }
 
@@ -326,35 +334,6 @@ h1 {
   background-color: rgba(247, 98, 65, 0.24);
 }
 
-#unity-fullscreen-exit-button {
-  position: absolute;
-  right: max(16px, env(safe-area-inset-right));
-  top: max(16px, env(safe-area-inset-top));
-  z-index: 9;
-  display: none;
-  width: 42px;
-  height: 42px;
-  padding: 0;
-  place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 9px;
-  background: rgba(0, 0, 0, 0.62);
-  color: #ffffff;
-  cursor: pointer;
-}
-
-#unity-fullscreen-exit-button::before {
-  content: "×";
-  font-family: Arial, sans-serif;
-  font-size: 28px;
-  line-height: 1;
-}
-
-#unity-stage:fullscreen #unity-fullscreen-exit-button,
-#unity-stage:-webkit-full-screen #unity-fullscreen-exit-button {
-  display: grid;
-}
-
 #unity-warning {
   position: absolute;
   left: 50%;
@@ -366,6 +345,15 @@ h1 {
   color: #111827;
   font-size: 14px;
   text-align: center;
+}
+
+@media (min-aspect-ratio: 16 / 9) {
+  #unity-stage:fullscreen #unity-canvas,
+  #unity-stage:-webkit-full-screen #unity-canvas,
+  #unity-stage.fullscreen-active #unity-canvas {
+    width: auto !important;
+    height: 100% !important;
+  }
 }
 
 #unity-warning > div {
@@ -433,8 +421,7 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
   .back-link,
   #unity-progress-bar-full,
-  #unity-fullscreen-button,
-  #unity-fullscreen-exit-button {
+  #unity-fullscreen-button {
     transition: none;
   }
 }
