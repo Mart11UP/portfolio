@@ -63,7 +63,6 @@
               </div>
             </div>
             <div id="unity-warning"></div>
-            <button id="unity-fullscreen-exit-button" type="button" aria-label="Exit fullscreen"></button>
           </div>
           <div id="unity-footer">
             <p class="demo-description">
@@ -82,7 +81,6 @@
       var loadingBar = document.querySelector("#unity-loading-bar");
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
-      var fullscreenExitButton = document.querySelector("#unity-fullscreen-exit-button");
       var warningBanner = document.querySelector("#unity-warning");
       var orientationPrompt = document.querySelector("#orientation-prompt");
       var continuePortraitButton = document.querySelector("#continue-portrait-button");
@@ -130,11 +128,9 @@
         }
       }
 
-      function exitDemoFullscreen() {
-        var exitFullscreen = document.exitFullscreen || document.webkitExitFullscreen;
-        if (exitFullscreen) {
-          exitFullscreen.call(document);
-        }
+      function updateFullscreenState() {
+        var fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement;
+        stage.classList.toggle("fullscreen-active", fullscreenElement === stage);
       }
 
       continuePortraitButton.onclick = function () {
@@ -142,7 +138,8 @@
         updateOrientationPrompt();
         canvas.focus();
       };
-      fullscreenExitButton.onclick = exitDemoFullscreen;
+      document.addEventListener("fullscreenchange", updateFullscreenState);
+      document.addEventListener("webkitfullscreenchange", updateFullscreenState);
       if (portraitMediaQuery.addEventListener) {
         portraitMediaQuery.addEventListener("change", updateOrientationPrompt);
       } else {
