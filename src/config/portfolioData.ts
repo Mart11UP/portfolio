@@ -141,7 +141,7 @@ export const PORTFOLIO_INFO: Portfolio = {
     },
     {
       id: "new-west-music",
-      title: "Freelance Game Developer",
+      title: "Unity Developer",
       company: "New West Music",
       date: { start: "Oct 2022", end: "Aug 2023" },
       summary:
@@ -444,11 +444,11 @@ export const PORTFOLIO_INFO: Portfolio = {
   academicExperience: [
     {
       id: "beedevelopers-workshop",
-      title: "Unity Instructor",
-      company: "BeeDevelopers",
+      title: "Unity Workshop Instruction",
+      company: "University Student Group Volunteer",
       date: "Fall 2023",
       summary:
-        "Delivered an introductory workshop on Unity and C# programming for university students.",
+        "Volunteered with BeeDevelopers to teach an introductory Unity and C# workshop for university students.",
       bullets: [
         "Guided students through exercises and project development covering physics, asset implementation, and programming fundamentals.",
         "Provided hands-on support to build foundational knowledge of game mechanics and development workflows.",
@@ -457,7 +457,7 @@ export const PORTFOLIO_INFO: Portfolio = {
     },
     {
       id: "summer-science-game-ai",
-      title: "Game Developer - Artificial Intelligence in Video Games",
+      title: "Research and Game Development with Artificial Intelligence",
       company: "Summer of Science",
       date: "Summer 2023",
       summary:
@@ -470,7 +470,7 @@ export const PORTFOLIO_INFO: Portfolio = {
     },
     {
       id: "summer-science-procedural-generation",
-      title: "Game Developer - Procedural Content and Game Design Research",
+      title: "Research and Game Development with Procedural Content Generation",
       company: "Summer of Science",
       date: "Summer 2022",
       summary:
@@ -483,11 +483,11 @@ export const PORTFOLIO_INFO: Portfolio = {
     },
     {
       id: "la-bestia-steam-vr",
-      title: "Unity Developer",
-      company: "La Bestia - Steam VR Experience",
+      title: "Unity Development for a SteamVR Experience",
+      company: "Project Scholarship",
       date: "2022",
       summary:
-        "Improved the atmosphere and visual fidelity of a Steam VR experience through textures, lighting, and model adjustments.",
+        "Received a scholarship to contribute to La Bestia, improving the atmosphere and visual fidelity of the SteamVR experience through textures, lighting, and model adjustments.",
       bullets: [
         "Improved environmental details and character poses.",
         "Assisted with programming to improve interactivity and flow.",
