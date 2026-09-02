@@ -118,7 +118,7 @@ const DetailMedia: FC<{
 const DetailTextMedia: FC<{
   block: Extract<ProjectDetailBlock, { type: "text-media" }>;
 }> = ({ block }) => (
-  <section className="grid gap-5 md:grid-cols-[minmax(0,3fr)_minmax(15rem,2fr)] md:items-center">
+  <section className="grid gap-5 md:grid-cols-[minmax(0,3fr)_minmax(15rem,2fr)] md:items-start">
     <div>
       {block.heading && <SectionHeading>{block.heading}</SectionHeading>}
       <p className="whitespace-pre-line text-sm leading-relaxed text-[var(--text)]">

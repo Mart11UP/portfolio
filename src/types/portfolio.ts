@@ -181,6 +181,17 @@ export type Role = {
   link?: string; // company site
 };
 
+export type Award = {
+  id?: string;
+  title: string; // e.g. "First Place"
+  event: string;
+  role?: string;
+  date?: DateRange | string;
+  summary?: string;
+  bullets?: string[];
+  tech?: string[];
+};
+
 export type Education = {
   id?: string;
   degree?: string; // "BSc Computer Science"
@@ -217,6 +228,8 @@ export type Portfolio = {
   skills?: SkillGroup[]; // grouped skills
   experience?: Role[]; // work history
   projects?: Project[]; // portfolio projects
+  academicExperience?: Role[];
+  awards?: Award[];
   education?: Education[];
   certifications?: Certification[];
   extras?: {

@@ -1,9 +1,47 @@
 import React, { useState, useMemo, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import type { SkillGroup } from "../types/portfolio";
+import type { IconType } from "react-icons";
 import * as SiIcons from "react-icons/si";
+import { BiLogoVisualStudio } from "react-icons/bi";
+import {
+  FaAppleWhole,
+  FaArrowsLeftRight,
+  FaCube,
+  FaDiagramProject,
+  FaGamepad,
+  FaGaugeHigh,
+  FaKeyboard,
+  FaNetworkWired,
+  FaPaintbrush,
+  FaPenNib,
+  FaRobot,
+  FaRoute,
+  FaVideo,
+  FaWandMagicSparkles,
+  FaWindowMaximize,
+} from "react-icons/fa6";
 import { SkillCircle } from "./SkillCircle";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa6";
+
+const additionalSkillIcons: Record<string, IconType> = {
+  BiLogoVisualStudio,
+  FaAppleWhole,
+  FaArrowsLeftRight,
+  FaCube,
+  FaDiagramProject,
+  FaGamepad,
+  FaGaugeHigh,
+  FaKeyboard,
+  FaNetworkWired,
+  FaPaintbrush,
+  FaPenNib,
+  FaRobot,
+  FaRoute,
+  FaVideo,
+  FaWandMagicSparkles,
+  FaWindowMaximize,
+};
 
 export const SkillsList: React.FC<{
   skills?: SkillGroup[];
@@ -158,7 +196,9 @@ export const SkillsList: React.FC<{
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-6 gap-4">
                   {groupSkills.map((s) => {
-                    const Icon = SiIcons[s.icon as keyof typeof SiIcons];
+                    const Icon =
+                      SiIcons[s.icon as keyof typeof SiIcons] ??
+                      additionalSkillIcons[s.icon ?? ""];
                     return (
                       <motion.fieldset
                         key={s.name}

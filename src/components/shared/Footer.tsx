@@ -1,45 +1,45 @@
 import React from "react";
-import { SiKaggle, SiGithub, SiLinkedin } from "react-icons/si";
+import { SiArtstation, SiLinkedin } from "react-icons/si";
+import { PORTFOLIO_INFO } from "../../config/portfolioData";
 
 export const Footer: React.FC = () => {
+  const artStation = PORTFOLIO_INFO.personal.contact?.socials?.find(
+    (social) => social.label === "ArtStation",
+  );
+  const linkedIn = PORTFOLIO_INFO.personal.contact?.socials?.find(
+    (social) => social.label === "LinkedIn",
+  );
+
   return (
     <footer className="text-sm text-[var(--muted)] border-t border-[var(--border)] py-6">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 px-6">
-        {/* Left: message */}
-        <div>
-          Designed &amp; coded with ☕ + ❤️ by{" "}
-          <span className="font-medium text-[var(--text)]">satya</span>
-        </div>
+        <div>© {new Date().getFullYear()} {PORTFOLIO_INFO.personal.name}</div>
 
-        {/* Right: social icons */}
         <div className="flex items-center gap-4">
-          <a
-            href="https://www.kaggle.com/satyasubudhi"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Kaggle"
-            className="hover:text-[var(--text)] transition-colors"
-          >
-            <SiKaggle size={40} />
-          </a>
-          <a
-            href="https://github.com/satya00089"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            className="hover:text-[var(--text)] transition-colors"
-          >
-            <SiGithub size={20} />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/satya-subudhi/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="hover:text-[var(--text)] transition-colors"
-          >
-            <SiLinkedin size={20} />
-          </a>
+          {linkedIn && (
+            <a
+              href={linkedIn.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="flex items-center gap-2 hover:text-[var(--text)] transition-colors"
+            >
+              <SiLinkedin size={20} />
+              <span>LinkedIn</span>
+            </a>
+          )}
+          {artStation && (
+            <a
+              href={artStation.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="ArtStation"
+              className="flex items-center gap-2 hover:text-[var(--text)] transition-colors"
+            >
+              <SiArtstation size={20} />
+              <span>ArtStation</span>
+            </a>
+          )}
         </div>
       </div>
     </footer>

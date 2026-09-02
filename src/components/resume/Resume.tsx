@@ -193,10 +193,12 @@ export const Resume: React.FC<{ className?: string }> = ({
         </section>
       )}
 
-      {/* Experience */}
+      {/* Professional Experience */}
       {resumeInfo.experience && resumeInfo.experience.length > 0 && (
         <section>
-          <h2 className="text-base font-semibold mt-4">Experience</h2>
+          <h2 className="text-base font-semibold mt-4">
+            Professional Experience
+          </h2>
           <div className="space-y-6">
             {resumeInfo.experience.map((exp, idx) => (
               <div key={exp.id ?? `${exp.title}-${idx}`} className="text-sm">
@@ -280,6 +282,117 @@ export const Resume: React.FC<{ className?: string }> = ({
                         {t}
                       </span>
                     ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Academic Experience */}
+      {resumeInfo.academicExperience &&
+        resumeInfo.academicExperience.length > 0 && (
+          <section>
+            <h2 className="text-base font-semibold mt-4">
+              Academic Experience
+            </h2>
+            <div className="space-y-6">
+              {resumeInfo.academicExperience.map((exp, idx) => (
+                <div key={exp.id ?? `${exp.title}-${idx}`} className="text-sm">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start">
+                    <div>
+                      <div className="font-medium">
+                        {exp.title}
+                        {exp.company ? (
+                          <span className="text-[var(--muted)]">
+                            {" "}
+                            — {exp.company}
+                          </span>
+                        ) : null}
+                      </div>
+                      {exp.location && (
+                        <div className="text-xs text-[var(--muted)]">
+                          {exp.location}
+                        </div>
+                      )}
+                    </div>
+                    <div className="text-[var(--muted)] mt-2 sm:mt-0">
+                      {formatDate(exp.date)}
+                    </div>
+                  </div>
+
+                  {exp.summary && (
+                    <p className="mt-2 text-[var(--text)]">{exp.summary}</p>
+                  )}
+
+                  {exp.bullets && exp.bullets.length > 0 && (
+                    <ul className="list-disc list-inside mt-2">
+                      {exp.bullets.map((bullet, index) => (
+                        <li key={index} className="text-[var(--text)]">
+                          {bullet}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {exp.tech && exp.tech.length > 0 && (
+                    <div className="mt-2 text-xs text-[var(--muted)]">
+                      Tech: {exp.tech.join(", ")}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+      {/* Awards & Competitions */}
+      {resumeInfo.awards && resumeInfo.awards.length > 0 && (
+        <section>
+          <h2 className="text-base font-semibold mt-4">
+            Awards &amp; Competitions
+          </h2>
+          <div className="space-y-6">
+            {resumeInfo.awards.map((award, idx) => (
+              <div key={award.id ?? `${award.event}-${idx}`} className="text-sm">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start">
+                  <div>
+                    <div className="font-medium">
+                      {award.title}
+                      <span className="text-[var(--muted)]">
+                        {" "}
+                        — {award.event}
+                      </span>
+                    </div>
+                    {award.role && (
+                      <div className="text-xs text-[var(--muted)]">
+                        {award.role}
+                      </div>
+                    )}
+                  </div>
+                  <div className="text-[var(--muted)] mt-2 sm:mt-0">
+                    {formatDate(award.date)}
+                  </div>
+                </div>
+
+                {award.summary && (
+                  <p className="mt-2 text-[var(--text)]">{award.summary}</p>
+                )}
+
+                {award.bullets && award.bullets.length > 0 && (
+                  <ul className="list-disc list-inside mt-2">
+                    {award.bullets.map((bullet, index) => (
+                      <li key={index} className="text-[var(--text)]">
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {award.tech && award.tech.length > 0 && (
+                  <div className="mt-2 text-xs text-[var(--muted)]">
+                    Tech: {award.tech.join(", ")}
                   </div>
                 )}
               </div>

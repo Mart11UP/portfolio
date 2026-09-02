@@ -18,6 +18,7 @@ import CLIResume from "../components/CLIResume";
 const PortfolioPage: React.FC = () => {
   const [selected, setSelected] = useState<Project | null>(null);
   const [showCLI, setShowCLI] = useState(false);
+  const contact = PORTFOLIO_INFO.personal.contact;
 
   return (
     <ThemeProvider>
@@ -75,12 +76,12 @@ const PortfolioPage: React.FC = () => {
           </p>
           <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)]">
-              <ContactForm />
+              <ContactForm sendTo={contact?.email} />
             </div>
 
             <div className="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)] flex flex-col gap-4">
               <div>
-                <div className="font-semibold">Let's collaborate</div>
+                <div className="font-semibold">Let's make games!</div>
                 <div className="text-sm text-gray-500 dark:text-gray-400">
                   I'm available for freelance and contract work. My inbox is
                   open.
@@ -89,10 +90,10 @@ const PortfolioPage: React.FC = () => {
               <div className="mt-2">
                 <div className="font-semibold">Quick contact</div>
                 <div className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                  Email: satyasubudhi089@gmail.com
+                  Email: {contact?.email}
                 </div>
                 <div className="text-sm text-gray-500 dark:text-gray-400">
-                  Location: Remote
+                  Location: {contact?.location}
                 </div>
               </div>
             </div>

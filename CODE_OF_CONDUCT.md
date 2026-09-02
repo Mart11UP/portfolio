@@ -60,7 +60,7 @@ representative at an online or offline event.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement at
-[satyasubudhi089@gmail.com](mailto:satyasubudhi089@gmail.com).
+[martinst.johnclarke@gmail.com](mailto:martinst.johnclarke@gmail.com).
 
 All complaints will be reviewed and investigated promptly and fairly.
 
@@ -140,7 +140,7 @@ If you have questions about this Code of Conduct or need to report an incident,
 please contact:
 
 **Satya Subudhi**  
-📧 Email: satyasubudhi089@gmail.com  
+📧 Email: martinst.johnclarke@gmail.com  
 🐙 GitHub: [@satya00089](https://github.com/satya00089)
 
 We are committed to providing a welcoming and inspiring community for all.

@@ -21,7 +21,7 @@ Please **do not** create a public GitHub issue for security vulnerabilities. Thi
 
 Send a detailed report to:
 
-**Email:** [satyasubudhi089@gmail.com](mailto:satyasubudhi089@gmail.com)
+**Email:** [martinst.johnclarke@gmail.com](mailto:martinst.johnclarke@gmail.com)
 
 **Subject:** `[SECURITY] Brief description of the vulnerability`
 
@@ -217,7 +217,7 @@ Contributors who report valid security vulnerabilities will be:
 For security concerns, contact:
 
 **Satya Subudhi**  
-📧 Email: [satyasubudhi089@gmail.com](mailto:satyasubudhi089@gmail.com)  
+📧 Email: [martinst.johnclarke@gmail.com](mailto:martinst.johnclarke@gmail.com)  
 🐙 GitHub: [@satya00089](https://github.com/satya00089)
 
 ---

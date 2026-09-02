@@ -186,7 +186,7 @@ This project is open source and available under the [MIT License](LICENSE).
 **Satya Subudhi**
 
 - GitHub: [@satya00089](https://github.com/satya00089)
-- Email: satyasubudhi089@gmail.com
+- Email: martinst.johnclarke@gmail.com
 
 ## 🤝 Contributing
 
