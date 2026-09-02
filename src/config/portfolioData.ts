@@ -11,7 +11,7 @@ export const PORTFOLIO_INFO: Portfolio = {
     title: "Game Developer",
     headline: "Unity · C# · Gameplay Programming · Multiplayer · Technical Art",
     summary:
-      "Passionate Unity developer with over three years of experience building engaging gameplay systems across a variety of game projects. Skilled in gameplay programming, game physics, UI implementation, shader development, and asset integration. I enjoy collaborating with cross-functional teams to create polished, high-quality experiences while continuously learning and refining both the technical and creative aspects of game development.",
+      "Passionate Unity developer with over four years of experience building engaging gameplay systems across a variety of game projects. Skilled in gameplay programming, game physics, UI implementation, shader development, and asset integration. I enjoy collaborating with cross-functional teams to create polished, high-quality experiences while continuously learning and refining both the technical and creative aspects of game development.",
     // optional hero summary used in the site hero; keeps a concise, senior-level intro tuned to your data
     hero: {
       summary: `I love building and improving player experiences, working with controllers, physics, and feedback to turn ideas into the best experiences for players.
@@ -23,7 +23,7 @@ export const PORTFOLIO_INFO: Portfolio = {
     },
     contact: {
       email: "martinst.johnclarke@gmail.com",
-      phone: "+52 462 227 6661",
+      // phone: "+52 462 227 6661",
       location: "Guadalajara, México",
       website: "https://mart11up.github.io/portfolio/",
       socials: [
