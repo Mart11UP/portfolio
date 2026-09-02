@@ -49,7 +49,7 @@ const PortfolioPage: React.FC = () => {
         </div>
       </motion.section>
 
-      <main className="relative z-20 mx-auto w-full max-w-6xl px-6 py-15 sm:py-20 lg:py-32 2xl:max-w-7xl">
+      <main className="relative z-20 mx-auto w-full max-w-6xl px-6 pt-8 pb-15 sm:pt-10 sm:pb-20 lg:pt-16 lg:pb-32 2xl:max-w-7xl">
         <section id="projects" className="py-8">
           <h2 className="text-2xl font-semibold text-[var(--brand)]">Projects</h2>
           <p className="mb-6 text-sm text-gray-500 dark:text-gray-400 mt-1">
@@ -69,17 +69,17 @@ const PortfolioPage: React.FC = () => {
           <SkillsList skills={PORTFOLIO_INFO.skills} isBar={true} />
         </section>
 
-        <section id="contact" className="py-8">
+        <section id="contact" className="pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24">
           <h2 className="text-2xl font-semibold text-[var(--brand)]">Contact</h2>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
             Tell me about your project, or just say hi.
           </p>
           <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)]">
+            <div className="flex min-h-56 p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)]">
               <ContactForm sendTo={contact?.email} />
             </div>
 
-            <div className="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)] flex flex-col gap-4">
+            <div className="min-h-56 p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)] flex flex-col justify-between gap-4">
               <div>
                 <div className="font-semibold">Let's make games!</div>
                 <div className="text-sm text-gray-500 dark:text-gray-400">

@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="text-sm text-[var(--muted)] border-t border-[var(--border)] py-6">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 px-6">
+      <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-4 px-6 md:flex-row 2xl:max-w-7xl">
         <div>© {new Date().getFullYear()} {PORTFOLIO_INFO.personal.name}</div>
 
         <div className="flex items-center gap-4">
