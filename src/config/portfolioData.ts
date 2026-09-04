@@ -262,7 +262,7 @@ export const PORTFOLIO_INFO: Portfolio = {
         platforms: ["iOS", "Android"],
         responsibilities: [
           "Developed and polished minigames and progression features",
-          "Built a queued notification system that presented rewards only at safe moments",
+          "Built a queued notification system that safely presented rewards",
           "Worked with game economy systems, including currencies, rewards, and progression",
           "Designed reusable gameplay and UI systems that remained easy to extend",
         ],
@@ -272,34 +272,39 @@ export const PORTFOLIO_INFO: Portfolio = {
           { type: "facts" },
           { type: "responsibilities" },
           {
-            type: "text",
+            type: "text-media",
             heading: "Reliable Reward Notifications",
-            body: "Rewards could trigger from several systems at once. I built a queue that held each popup until it was safe to display, preventing overlaps and timing conflicts.",
+            body: "Since reward notifications could appear at any moment, they caused problems during specific parts of gameplay. To prevent current and future issues, we developed a queue system and additional safeguards to avoid unexpected interactions while notifications were displayed.",
+            media: {
+              src: "projects/squishems/energy.gif",
+              alt: "Squishems gameplay showing energy reward notifications during a pachinko run",
+              caption: "Queued energy rewards appearing without overlapping.",
+              fit: "contain",
+            },
           },
           {
             type: "mobile-gallery",
             heading: "Gameplay Screenshots",
             images: [
               {
-                src: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/f7/ad/d8/f7add8c4-0177-2427-03a4-6f7002a356ae/a.jpg/1290x2796bb.webp",
-                thumbnailSrc:
-                  "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/f7/ad/d8/f7add8c4-0177-2427-03a4-6f7002a356ae/a.jpg/460x996bb.webp",
-                alt: "The Mexico's pachinko stage",
-                caption: "The Mexico's pachinko stage.",
+                src: "projects/squishems/squishygameplay.gif",
+                alt: "Basic Squishems pachinko gameplay in the Fairy Tale Forest stage",
+                caption: "The base pachinko gameplay in the Fairy Tale Forest stage.",
               },
               {
-                src: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/09/18/59/091859bb-c28e-9c4f-2818-065acf3458b2/b.jpg/1290x2796bb.webp",
-                thumbnailSrc:
-                  "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/09/18/59/091859bb-c28e-9c4f-2818-065acf3458b2/b.jpg/460x996bb.webp",
-                alt: "Squish'Ems character running through a city minigame",
-                caption: "One of the game's action minigames.",
+                src: "projects/squishems/cuichila.gif",
+                alt: "Gameplay from the Squishzilla minigame in Squishems",
+                caption: "The Squishzilla minigame.",
               },
               {
-                src: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/01/6a/d6/016ad6a6-c772-2927-5971-b8a3590ea56e/c.jpg/1290x2796bb.webp",
-                thumbnailSrc:
-                  "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/01/6a/d6/016ad6a6-c772-2927-5971-b8a3590ea56e/c.jpg/460x996bb.webp",
-                alt: "Stage building screen.",
-                caption: "Stage building screen.",
+                src: "projects/squishems/ui.gif",
+                alt: "One of the progression screens in Squishems",
+                caption: "One of the game's progression screens.",
+              },
+              {
+                src: "projects/squishems/bouncypop.gif",
+                alt: "Squishems Bouncy Pop minigame with numbered balls bouncing across the board",
+                caption: "The Bouncy Pop minigame.",
               },
             ],
           },
