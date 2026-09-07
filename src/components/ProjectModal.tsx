@@ -33,6 +33,7 @@ export const ProjectModal: React.FC<{
 
   const FaLink = FaIcons["FaLink" as keyof typeof FaIcons];
   const headerImageFit = project?.details?.headerImageFit ?? "cover";
+  const headerImagePosition = project?.details?.headerImagePosition ?? "center";
   const headerImageBlur = Math.max(
     0,
     project?.details?.headerImageBlur ?? 0,
@@ -219,14 +220,20 @@ export const ProjectModal: React.FC<{
                                         : "object-cover"
                                     }`
                               }`}
-                              style={
-                                headerImageBlur > 0
-                                  ? {
-                                      filter: `blur(${headerImageBlur}px)`,
-                                      transform: "scale(1.03)",
-                                    }
-                                  : undefined
-                              }
+                              style={{
+                                objectPosition:
+                                  headerImageFit === "cover"
+                                    ? headerImagePosition
+                                    : undefined,
+                                filter:
+                                  headerImageBlur > 0
+                                    ? `blur(${headerImageBlur}px)`
+                                    : undefined,
+                                transform:
+                                  headerImageBlur > 0
+                                    ? "scale(1.03)"
+                                    : undefined,
+                              }}
                             />
                           </div>
                         )}

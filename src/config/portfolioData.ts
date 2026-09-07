@@ -18,7 +18,7 @@ export const PORTFOLIO_INFO: Portfolio = {
       My work includes mobile, Steam, and online multiplayer games across a wide variety of genres.
 
       My goal is to make the player feel what the design intends.`,
-      // Independent from the complete Skills section below. Choose the labels and order shown in the hero.
+      // Independent from the complete Skills section below. Choose the labels and order shown in the hero.a ds
       mainSkills: ["Unity", "C#", "Multiplayer", "Physics", "Lua", "Roblox"],
     },
     contact: {
@@ -439,6 +439,57 @@ export const PORTFOLIO_INFO: Portfolio = {
               src: "projects/master-of-the-ball/boss-attack.png",
               alt: "Player fighting a wolf boss as blue fire, soccer balls, and arena destruction fill the screen",
               caption: "Fighting a boss during an arena-wide attack.",
+              fit: "contain",
+            },
+          },
+        ],
+      },
+    },
+    {
+      id: "unleash",
+      title: "Unleash Darkness",
+      description:
+        "A multiplayer boss-fighting game with clicker progression. Players train in different sports, unlock skills, and upgrade their character to defeat bosses. Developed for AGA as a branded promotional experience.",
+      tags: ["Game AI", "Gameplay", "PC","Steam", "Unity", "C#"],
+      image: "projects/unleash/cover.png",
+      links: [
+      ],
+      status: "in-development",
+      details: {
+        showHeaderImage: true,
+        headerImageFit: "cover",
+        headerImagePosition: "center 30%",
+        role: "Gameplay Programmer",
+        engine: "Unity",
+        platforms: ["Steam"],
+        responsibilities: [
+          "Built the lobby progression systems for training, upgrades, and boss selection",
+          "Implemented the clicker UI, player interactions, and feedback",
+          "Developed the skill progression and combat systems",
+          "Created a reusable boss framework for attacks, animation sequences, and vulnerability states",
+        ],
+        content: [
+          { type: "facts" },
+          { type: "responsibilities" },
+          {
+            type: "text-media",
+            heading: "Lobby",
+            body: "The lobby is the main hub for the clicker side of the game. Players can train in different sports to increase their levels and unlock skills, buy and use upgrades for training or combat, and choose which boss to fight.",
+            media: {
+              src: "projects/unleash/gameplay.gif",
+              alt: "Roblox player standing in the sports lobby facing boss portals between the store and skins buildings",
+              caption: "The lobby, with training areas, shops, and portals for selecting a boss.",
+              fit: "contain",
+            },
+          },
+          {
+            type: "text-media",
+            heading: "GOAP Agents and Food Chain System",
+            body: "Developed clicker-based training with responsive UI and player feedback, along with sport progression that unlocks new attacks for boss fights.",
+            media: {
+              src: "projects/unleash/goap-agents.gif",
+              alt: "Player training soccer through the clicker system while the level and progress bars update",
+              caption: "Training soccer to gain sport levels and unlock skills.",
               fit: "contain",
             },
           },
