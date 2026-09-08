@@ -450,7 +450,7 @@ export const PORTFOLIO_INFO: Portfolio = {
       title: "Unleash Darkness",
       description:
         "A survival-exploration adventure that explores light and darkness through both gameplay and narrative. Players must learn to read the environment, as creatures and plants have behaviors and effects that can help them progress or become obstacles in their path.",
-      tags: ["Game AI", "Gameplay", "PC","Steam", "Unity", "C#"],
+      tags: ["Game AI", "GOAP", "C#", "Gameplay", "PC", "Steam", "Unity"],
       image: "projects/unleash/cover.png",
       links: [
       ],
@@ -633,6 +633,8 @@ export const tagColors: TagColors = {
     "border border-indigo-300 bg-indigo-100 text-indigo-900 dark:border-indigo-800 dark:bg-indigo-950 dark:text-indigo-200",
   "Game AI":
     "border border-fuchsia-300 bg-fuchsia-100 text-fuchsia-900 dark:border-fuchsia-800 dark:bg-fuchsia-950 dark:text-fuchsia-200",
+  GOAP:
+    "border border-lime-300 bg-lime-100 text-lime-900 dark:border-lime-800 dark:bg-lime-950 dark:text-lime-200",
   "AI Systems":
     "border border-purple-300 bg-purple-100 text-purple-900 dark:border-purple-800 dark:bg-purple-950 dark:text-purple-200",
   Multiplayer:
@@ -670,6 +672,8 @@ export const tagColors: TagColors = {
   Console:
     "border border-zinc-300 bg-zinc-100 text-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200",
   PC: "border border-blue-300 bg-blue-100 text-blue-900 dark:border-blue-800 dark:bg-blue-950 dark:text-blue-200",
+  Steam:
+    "border border-cyan-300 bg-cyan-100 text-cyan-900 dark:border-cyan-800 dark:bg-cyan-950 dark:text-cyan-200",
   Mobile:
     "border border-emerald-300 bg-emerald-100 text-emerald-900 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-200",
   Web: "border border-cyan-300 bg-cyan-100 text-cyan-900 dark:border-cyan-800 dark:bg-cyan-950 dark:text-cyan-200",
