@@ -117,33 +117,113 @@ const DetailMedia: FC<{
 
 const DetailTextMedia: FC<{
   block: Extract<ProjectDetailBlock, { type: "text-media" }>;
-}> = ({ block }) => (
-  <section className="grid gap-5 md:grid-cols-[minmax(0,3fr)_minmax(15rem,2fr)] md:items-center">
-    <div className="md:-translate-y-2">
-      {block.heading && <SectionHeading>{block.heading}</SectionHeading>}
-      <p className="whitespace-pre-line text-sm leading-relaxed text-[var(--text)]">
-        {block.body}
-      </p>
-    </div>
+}> = ({ block }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const openerRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const imageSrc = resolveMediaPath(block.media.src);
 
-    <figure className="mx-auto w-full max-w-sm">
-      <img
-        src={resolveMediaPath(block.media.src)}
-        alt={block.media.alt}
-        loading="lazy"
-        decoding="async"
-        className={`max-h-[18rem] w-full rounded-lg border border-[var(--border)] bg-[var(--bg)] ${
-          block.media.fit === "cover" ? "object-cover" : "object-contain"
-        }`}
-      />
-      {block.media.caption && (
-        <figcaption className="mt-2 text-xs leading-relaxed text-[var(--muted)] opacity-75">
-          {block.media.caption}
-        </figcaption>
-      )}
-    </figure>
-  </section>
-);
+  useEffect(() => {
+    if (!isExpanded) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const opener = openerRef.current;
+    document.body.style.overflow = "hidden";
+    closeButtonRef.current?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsExpanded(false);
+      if (event.key === "Tab") {
+        event.preventDefault();
+        closeButtonRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+      opener?.focus();
+    };
+  }, [isExpanded]);
+
+  const image = (
+    <img
+      src={imageSrc}
+      alt={block.media.alt}
+      loading="lazy"
+      decoding="async"
+      className={`max-h-[18rem] w-full rounded-lg border border-[var(--border)] bg-[var(--bg)] ${
+        block.media.fit === "cover" ? "object-cover" : "object-contain"
+      }`}
+    />
+  );
+
+  return (
+    <section className="grid gap-5 md:grid-cols-[minmax(0,3fr)_minmax(15rem,2fr)] md:items-center">
+      <div className="md:-translate-y-2">
+        {block.heading && <SectionHeading>{block.heading}</SectionHeading>}
+        <p className="whitespace-pre-line text-sm leading-relaxed text-[var(--text)]">
+          {block.body}
+        </p>
+      </div>
+
+      <figure className="mx-auto w-full max-w-sm">
+        {block.media.expandable ? (
+          <button
+            ref={openerRef}
+            type="button"
+            onClick={() => setIsExpanded(true)}
+            className="group relative block w-full cursor-zoom-in rounded-lg text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand)]"
+            aria-label={`Expand image: ${block.media.alt}`}
+          >
+            {image}
+            <span className="absolute right-2 top-2 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/25 bg-black/65 text-white shadow-sm transition group-hover:bg-black/80 group-focus-visible:bg-black/80">
+              <Expand aria-hidden="true" className="h-4 w-4" />
+            </span>
+          </button>
+        ) : (
+          image
+        )}
+        {block.media.caption && (
+          <figcaption className="mt-2 text-xs leading-relaxed text-[var(--muted)] opacity-75">
+            {block.media.caption}
+          </figcaption>
+        )}
+      </figure>
+
+      {block.media.expandable &&
+        isExpanded &&
+        createPortal(
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Expanded image: ${block.media.alt}`}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-3 backdrop-blur-sm sm:p-6"
+            onMouseDown={(event) => {
+              if (event.target === event.currentTarget) setIsExpanded(false);
+            }}
+          >
+            <button
+              ref={closeButtonRef}
+              type="button"
+              onClick={() => setIsExpanded(false)}
+              className="absolute right-3 top-3 z-10 inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:right-6 sm:top-6"
+              aria-label="Close expanded image"
+            >
+              <X aria-hidden="true" className="h-6 w-6" />
+            </button>
+            <img
+              src={imageSrc}
+              alt={block.media.alt}
+              className="max-h-[calc(100vh-3rem)] max-w-[calc(100vw-1.5rem)] object-contain sm:max-h-[calc(100vh-6rem)] sm:max-w-[calc(100vw-3rem)]"
+            />
+          </div>,
+          document.body,
+        )}
+    </section>
+  );
+};
 
 const DetailMobileGallery: FC<{
   block: Extract<ProjectDetailBlock, { type: "mobile-gallery" }>;

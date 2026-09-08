@@ -111,6 +111,7 @@ export type ProjectDetailBlock =
         alt: string;
         caption?: string;
         fit?: "contain" | "cover";
+        expandable?: boolean;
       };
     }
   | { type: "list"; heading?: string; items: string[] }
