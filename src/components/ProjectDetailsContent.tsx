@@ -94,6 +94,7 @@ const DetailMedia: FC<{
 
   return (
     <figure className="w-full">
+      {block.heading && <SectionHeading>{block.heading}</SectionHeading>}
       {block.href ? (
         <a
           href={resolveMediaPath(block.href)}

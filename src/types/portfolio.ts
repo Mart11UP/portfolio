@@ -117,6 +117,7 @@ export type ProjectDetailBlock =
   | { type: "list"; heading?: string; items: string[] }
   | {
       type: "media";
+      heading?: string;
       src: string;
       alt: string;
       caption?: string;

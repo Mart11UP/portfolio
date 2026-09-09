@@ -506,6 +506,57 @@ export const PORTFOLIO_INFO: Portfolio = {
         ],
       },
     },
+    {
+      id: "horror-game-prototype",
+      title: "Horror Castle Prototype",
+      description:
+        "A small first-person horror game showcasing environment setup in Unity's High Definition Render Pipeline, dynamic audio, world interactions, and level progression systems.",
+      tags: ["Game Systems", "Audio", "HDRP", "Level Design", "PC", "Unity", "C#"],
+      image: "projects/horror/header.jpg",
+      links: [],
+      status: "prototype",
+      details: {
+        showHeaderImage: true,
+        headerImageFit: "cover",
+        role: "Game Developer",
+        engine: "Unity",
+        platforms: ["PC"],
+        responsibilities: [
+          "Built a requirement system for interactions, puzzles, and level progression",
+          "Implemented dynamic audio and scripted gameplay events",
+          "Set up and lit a horror castle environment in Unity HDRP",
+        ],
+        content: [
+          { type: "facts" },
+          { type: "responsibilities" },
+          {
+            type: "media",
+            src: "projects/horror/fire.gif",
+            alt: "The player carrying a candle through a fire-lit castle corridor",
+            caption: "Castle environment",
+            fit: "contain",
+          },
+          {
+            type: "media",
+            src: "projects/horror/entity.gif",
+            alt: "An entity appearing in a dark castle corridor",
+            caption: "Scripted Entity Appearance",
+            fit: "contain",
+          },
+          {
+            type: "text-media",
+            heading: "Requirement System",
+            body: "For this project, I developed a requirement system that makes it easy to build interactions and puzzles that trigger events and let the player progress through the castle.",
+            media: {
+              src: "projects/horror/dead.gif",
+              alt: "The player triggering a progression event inside the castle",
+              caption: "An event triggered after meeting its requirements.",
+              fit: "contain",
+            },
+          },
+        ],
+      },
+    },
   ],
   academicExperience: [
     {
@@ -621,6 +672,8 @@ export const tagColors: TagColors = {
     "border border-orange-300 bg-orange-100 text-orange-800 dark:border-orange-800 dark:bg-orange-950 dark:text-orange-200",
   "Game Systems":
     "border border-amber-300 bg-amber-100 text-amber-900 dark:border-amber-800 dark:bg-amber-950 dark:text-amber-200",
+  HDRP:
+    "border border-blue-300 bg-blue-100 text-blue-900 dark:border-blue-800 dark:bg-blue-950 dark:text-blue-200",
   "Game Economy":
     "border border-green-300 bg-green-100 text-green-900 dark:border-green-700 dark:bg-green-950 dark:text-green-200",
   "Motion Controls":
