@@ -369,6 +369,12 @@ export const PORTFOLIO_INFO: Portfolio = {
             type: "text-media",
             heading: "Interactive Demo",
             body: "I also built controls that let users interact with the generator and see how it works. They can manually collapse and erase cells, as well as paint terrain types such as water and grass. Painting chooses the terrain category, while the generator selects a compatible tile variation and completes the surrounding environment.",
+            trailingLink: {
+              before: "You can play the demo",
+              label: "here",
+              url: "demos/procedural-environment/index.html",
+              ariaLabel: "Play the Magic Environment Creator demo",
+            },
             media: {
               src: "https://cdna.artstation.com/p/assets/images/images/086/508/860/original/martin-st-john-clarke-bideau-river.gif?1743382746",
               alt: "Interactive controls being used to paint a river while the generator fills in compatible water tiles",

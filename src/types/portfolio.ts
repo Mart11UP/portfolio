@@ -106,6 +106,12 @@ export type ProjectDetailBlock =
       type: "text-media";
       heading?: string;
       body: string;
+      trailingLink?: {
+        before: string;
+        label: string;
+        url: string;
+        ariaLabel?: string;
+      };
       media: {
         src: string;
         alt: string;

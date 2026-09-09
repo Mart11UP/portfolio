@@ -166,6 +166,22 @@ const DetailTextMedia: FC<{
         {block.heading && <SectionHeading>{block.heading}</SectionHeading>}
         <p className="whitespace-pre-line text-sm leading-relaxed text-[var(--text)]">
           {block.body}
+          {block.trailingLink && (
+            <>
+              {" "}
+              {block.trailingLink.before}{" "}
+              <a
+                href={resolveMediaPath(block.trailingLink.url)}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={block.trailingLink.ariaLabel}
+                className="font-medium text-[var(--link)] underline underline-offset-2 hover:text-[var(--text)]"
+              >
+                {block.trailingLink.label}
+              </a>
+              .
+            </>
+          )}
         </p>
       </div>
 
