@@ -12,10 +12,7 @@ import { useTheme } from "../../context/ThemeContext";
 
 type NavLink = { href: string; label: string };
 
-export const Header: React.FC<{ links?: NavLink[]; onTryCLI?: () => void }> = ({
-  links = [],
-  onTryCLI,
-}) => {
+export const Header: React.FC<{ links?: NavLink[] }> = ({ links = [] }) => {
   const { dark, toggle } = useTheme();
   const headerRef = useRef<HTMLElement | null>(null);
 
@@ -128,7 +125,7 @@ export const Header: React.FC<{ links?: NavLink[]; onTryCLI?: () => void }> = ({
           <span className="text-sm text-[var(--brand)]">UP</span>
         </a>
 
-        {/* Right: nav + theme + Try CLI */}
+        {/* Right: nav + theme */}
         <nav
           aria-label="Primary"
           className="relative flex h-9 items-center gap-2 sm:gap-3"
@@ -154,14 +151,6 @@ export const Header: React.FC<{ links?: NavLink[]; onTryCLI?: () => void }> = ({
               );
             })}
           </div>
-
-          <button
-            onClick={onTryCLI}
-            className="inline-flex h-9 items-center rounded border border-[var(--border)] px-3 text-sm leading-none transition hover:bg-[var(--border)]/30 cursor-pointer"
-            aria-label="Try CLI"
-          >
-            Try CLI
-          </button>
 
           <button
             onClick={toggle}

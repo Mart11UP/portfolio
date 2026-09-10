@@ -92,7 +92,6 @@ export const PORTFOLIO_INFO: Portfolio = {
       title: "Art & Content Creation",
       skills: [
         { name: "Blender", icon: "SiBlender", level: 70 },
-        { name: "Autodesk Maya", icon: "SiAutodeskmaya", level: 40 },
         { name: "Substance 3D Painter", icon: "FaPaintbrush", level: 70 },
         { name: "Adobe Photoshop", icon: "SiAdobephotoshop", level: 80 },
         { name: "Adobe Illustrator", icon: "SiAdobeillustrator", level: 80 },
@@ -312,6 +311,57 @@ export const PORTFOLIO_INFO: Portfolio = {
       },
     },
     {
+      id: "horror-game-prototype",
+      title: "Horror Castle Prototype",
+      description:
+        "A small first-person horror game showcasing environment setup in Unity's High Definition Render Pipeline, dynamic audio, world interactions, and level progression systems.",
+      tags: ["Game Systems", "Audio", "HDRP", "Level Design", "PC", "Unity", "C#"],
+      image: "projects/horror/header.jpg",
+      links: [],
+      status: "prototype",
+      details: {
+        showHeaderImage: true,
+        headerImageFit: "cover",
+        role: "Game Developer",
+        engine: "Unity",
+        platforms: ["PC"],
+        responsibilities: [
+          "Built a requirement system for interactions, puzzles, and level progression",
+          "Implemented dynamic audio and scripted gameplay events",
+          "Set up and lit a horror castle environment in Unity HDRP",
+        ],
+        content: [
+          { type: "facts" },
+          { type: "responsibilities" },
+          {
+            type: "media",
+            src: "projects/horror/fire.gif",
+            alt: "The player carrying a candle through a fire-lit castle corridor",
+            caption: "Castle environment",
+            fit: "contain",
+          },
+          {
+            type: "media",
+            src: "projects/horror/entity.gif",
+            alt: "An entity appearing in a dark castle corridor",
+            caption: "Scripted Entity Appearance",
+            fit: "contain",
+          },
+          {
+            type: "text-media",
+            heading: "Requirement System",
+            body: "For this project, I developed a requirement system that makes it easy to build interactions and puzzles that trigger events and let the player progress through the castle.",
+            media: {
+              src: "projects/horror/dead.gif",
+              alt: "The player triggering a progression event inside the castle",
+              caption: "Lighting the candles to unlock the way forward.",
+              fit: "contain",
+            },
+          },
+        ],
+      },
+    },
+    {
       id: "magic-environment-generator",
       title: "Magic Environment Creator",
       description:
@@ -507,57 +557,6 @@ export const PORTFOLIO_INFO: Portfolio = {
               caption: "Configuring a creature's goals, actions, priorities, and diet.",
               fit: "contain",
               expandable: true,
-            },
-          },
-        ],
-      },
-    },
-    {
-      id: "horror-game-prototype",
-      title: "Horror Castle Prototype",
-      description:
-        "A small first-person horror game showcasing environment setup in Unity's High Definition Render Pipeline, dynamic audio, world interactions, and level progression systems.",
-      tags: ["Game Systems", "Audio", "HDRP", "Level Design", "PC", "Unity", "C#"],
-      image: "projects/horror/header.jpg",
-      links: [],
-      status: "prototype",
-      details: {
-        showHeaderImage: true,
-        headerImageFit: "cover",
-        role: "Game Developer",
-        engine: "Unity",
-        platforms: ["PC"],
-        responsibilities: [
-          "Built a requirement system for interactions, puzzles, and level progression",
-          "Implemented dynamic audio and scripted gameplay events",
-          "Set up and lit a horror castle environment in Unity HDRP",
-        ],
-        content: [
-          { type: "facts" },
-          { type: "responsibilities" },
-          {
-            type: "media",
-            src: "projects/horror/fire.gif",
-            alt: "The player carrying a candle through a fire-lit castle corridor",
-            caption: "Castle environment",
-            fit: "contain",
-          },
-          {
-            type: "media",
-            src: "projects/horror/entity.gif",
-            alt: "An entity appearing in a dark castle corridor",
-            caption: "Scripted Entity Appearance",
-            fit: "contain",
-          },
-          {
-            type: "text-media",
-            heading: "Requirement System",
-            body: "For this project, I developed a requirement system that makes it easy to build interactions and puzzles that trigger events and let the player progress through the castle.",
-            media: {
-              src: "projects/horror/dead.gif",
-              alt: "The player triggering a progression event inside the castle",
-              caption: "An event triggered after meeting its requirements.",
-              fit: "contain",
             },
           },
         ],

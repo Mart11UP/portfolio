@@ -10,7 +10,7 @@ export const ContactForm: React.FC<{ sendTo?: string }> = ({ sendTo }) => {
       <div>
         <h3 className="font-semibold text-[var(--text)]">Send me a message</h3>
         <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-          Have a game or project in mind? Send me an email and let&apos;s talk.
+          Have a game or project in mind, or just want to chat? Send me an email 😊
         </p>
       </div>
 

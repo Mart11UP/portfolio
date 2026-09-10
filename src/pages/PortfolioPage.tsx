@@ -13,11 +13,9 @@ import type { Project } from "../types/portfolio";
 import { ProjectModal } from "../components/ProjectModal";
 import { ScrollProgressBar } from "../components/shared/ScrollProgressBar";
 import { ScrollToTop } from "../components/shared/ScrollToTop";
-import CLIResume from "../components/CLIResume";
 
 const PortfolioPage: React.FC = () => {
   const [selected, setSelected] = useState<Project | null>(null);
-  const [showCLI, setShowCLI] = useState(false);
   const contact = PORTFOLIO_INFO.personal.contact;
 
   return (
@@ -30,10 +28,7 @@ const PortfolioPage: React.FC = () => {
           { href: "#skills", label: "Skills" },
           { href: "#contact", label: "Contact" },
         ]}
-        onTryCLI={() => setShowCLI(true)}
       />
-      {/* CLI panel (docked / overlay) */}
-      <CLIResume open={showCLI} onClose={() => setShowCLI(false)} />
 
       <motion.section
         id="about"
@@ -64,16 +59,13 @@ const PortfolioPage: React.FC = () => {
         <section id="skills" className="py-8">
           <h2 className="text-2xl font-semibold text-[var(--brand)]">Skills</h2>
           <p className="mb-6 text-sm text-gray-500 dark:text-gray-400 mt-1">
-            Tools and technologies I use regularly.
+            Game development areas, tools, and technologies I work with regularly.
           </p>
           <SkillsList skills={PORTFOLIO_INFO.skills} isBar={true} />
         </section>
 
         <section id="contact" className="pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24">
           <h2 className="text-2xl font-semibold text-[var(--brand)]">Contact</h2>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-            Tell me about your project, or just say hi.
-          </p>
           <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="flex min-h-56 p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)]">
               <ContactForm sendTo={contact?.email} />
@@ -81,7 +73,7 @@ const PortfolioPage: React.FC = () => {
 
             <div className="min-h-56 p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)] flex flex-col justify-between gap-4">
               <div>
-                <div className="font-semibold">Let's make games!</div>
+                <div className="font-semibold">Let's make games! 🎮</div>
                 <div className="text-sm text-gray-500 dark:text-gray-400">
                   I'm available for freelance and contract work. My inbox is
                   open.
