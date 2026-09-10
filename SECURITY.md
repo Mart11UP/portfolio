@@ -98,7 +98,7 @@ After you submit a report:
 
 ## Security Best Practices for Users
 
-### For Developers Using This Template
+### For Maintainers
 
 1. **Keep Dependencies Updated**
 
@@ -167,15 +167,9 @@ We use the following major dependencies:
 
 These are regularly updated to their latest secure versions.
 
-### Contact Form Security
+### Contact Section
 
-If you implement a contact form backend:
-
-- Validate all inputs
-- Implement rate limiting
-- Use CAPTCHA to prevent spam
-- Sanitize data before processing
-- Use secure email services
+The contact section opens the visitor's email application and does not collect or process form submissions.
 
 ## Security Updates
 
@@ -216,9 +210,9 @@ Contributors who report valid security vulnerabilities will be:
 
 For security concerns, contact:
 
-**Satya Subudhi**  
+**Martín St.**
 📧 Email: [martinst.johnclarke@gmail.com](mailto:martinst.johnclarke@gmail.com)  
-🐙 GitHub: [@satya00089](https://github.com/satya00089)
+🐙 GitHub: [@Mart11UP](https://github.com/Mart11UP)
 
 ---
 

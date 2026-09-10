@@ -14,10 +14,10 @@ export const PORTFOLIO_INFO: Portfolio = {
       "Passionate Unity developer with over four years of experience building engaging gameplay systems across a variety of game projects. Skilled in gameplay programming, game physics, UI implementation, shader development, and asset integration. I enjoy collaborating with cross-functional teams to create polished, high-quality experiences while continuously learning and refining both the technical and creative aspects of game development.",
     // optional hero summary used in the site hero; keeps a concise, senior-level intro tuned to your data
     hero: {
-      summary: `I love building and improving player experiences, working with controllers, physics, and feedback to turn ideas into the best experiences for players.
+      summary: `I love building and improving gameplay, working with controllers, physics, and feedback to turn ideas into the best experiences for players.
       My work includes mobile, Steam, and online multiplayer games across a wide variety of genres.
 
-      My goal is to make the player feel what the design intends.`,
+      My goal is to make players feel what the design intends.`,
       // Independent from the complete Skills section below. Choose the labels and order shown in the hero.a ds
       mainSkills: ["Unity", "C#", "Physics", "Multiplayer", "Lua", "Roblox"],
     },
@@ -52,11 +52,11 @@ export const PORTFOLIO_INFO: Portfolio = {
       ],
     },
     {
-      title: "Game Development Areas",
+      title: "Game Development Skills",
       skills: [
         { name: "Gameplay Programming", icon: "FaGamepad", level: 90 },
         { name: "Game Physics", icon: "FaAppleWhole", level: 95 },
-        { name: "Multiplayer Online", icon: "FaNetworkWired", level: 80 },
+        { name: "Online Multiplayer", icon: "FaNetworkWired", level: 80 },
         { name: "UI Programming", icon: "FaWindowMaximize", level: 90 },
         { name: "Game AI", icon: "FaRobot", level: 70 },
         { name: "Optimization", icon: "FaGaugeHigh", level: 70 },
@@ -158,7 +158,7 @@ export const PORTFOLIO_INFO: Portfolio = {
       id: "unicorn-academy",
       title: "Unicorn Academy: Friendship Adventures",
       description:
-        "Open-world experience created for the Unicorn Academy series, featuring motion-controlled gameplay, from unicorn riding and movement to quests and minigames.",
+        "An open-world experience created for the Unicorn Academy series, featuring motion-controlled unicorn riding, exploration, quests, and minigames.",
       tags: [
         "Open World",
         "Motion Controls",
@@ -184,7 +184,7 @@ export const PORTFOLIO_INFO: Portfolio = {
         engine: "Unity",
         platforms: ["Nex Playground"],
         responsibilities: [
-          "Created and polished systems",
+          "Created and polished gameplay systems",
           "Developed quests and minigames",
           "Improved player feedback and responsiveness",
         ],
@@ -204,7 +204,7 @@ export const PORTFOLIO_INFO: Portfolio = {
             type: "media",
             src: "projects/unicorn-academy/race.gif",
             alt: "Third-person view of a rider racing a unicorn toward a checkpoint",
-            caption: "Racing across the world in one of the game's unicorn races.",
+            caption: "Racing through the open world toward the next checkpoint.",
             fit: "contain",
           },
           {
@@ -350,12 +350,12 @@ export const PORTFOLIO_INFO: Portfolio = {
               {
                 src: "projects/horror/entity.gif",
                 alt: "An entity appearing in a dark castle corridor",
-                caption: "Scripted Entity Appearance",
+                caption: "An entity appearing after a progression event.",
               },
               {
                 src: "projects/horror/fire.gif",
                 alt: "The player carrying a candle through a fire-lit castle corridor",
-                caption: "Castle environment transformed after completing a progression step.",
+                caption: "The castle transforms after the player completes a progression step.",
               },
             ],
           },
@@ -400,7 +400,7 @@ export const PORTFOLIO_INFO: Portfolio = {
             body: "The algorithm starts with an empty grid, with every tile option available in each cell. It chooses a cell and “collapses” it into one option. That choice removes impossible options from nearby cells. For example, grass cannot connect directly to water, so adjacent water options are discarded. The change keeps propagating, then the algorithm collapses the cell with the fewest options.\n\nIn short: choose a cell → collapse it → propagate the result.",
             media: {
               src: "projects/magic-environment-generator/behavior.gif",
-              alt: "Grid cells collapsing propagating its effect",
+              alt: "A grid cell collapsing and propagating its effect to nearby cells",
               caption: "Choosing a cell, collapsing it, and propagating its effect.",
               fit: "contain",
             },
@@ -412,7 +412,7 @@ export const PORTFOLIO_INFO: Portfolio = {
             media: {
               src: "projects/magic-environment-generator/fallback.gif",
               alt: "A section of the procedural environment resetting after the generator reaches an impossible combination",
-              caption: "Resetting the sorrounding area when some cells reaches zero possibilities.",
+              caption: "Resetting nearby cells when a cell has no valid options.",
               fit: "contain",
             },
           },
@@ -529,7 +529,7 @@ export const PORTFOLIO_INFO: Portfolio = {
           {
             type: "text-media",
             heading: "Learning Creature Behavior",
-            body: "Players have to observe how creatures interact to learn their behavior. This can help them avoid dying and even find ways to progress through the game.",
+            body: "Players must observe how creatures interact to understand their behavior. This helps them survive and discover ways to progress.",
             media: {
               src: "projects/unleash/learning.gif",
               alt: "The player observing creatures in Unleash Darkness",
@@ -567,8 +567,8 @@ export const PORTFOLIO_INFO: Portfolio = {
   academicExperience: [
     {
       id: "beedevelopers-workshop",
-      title: "Unity Workshop Instruction",
-      company: "University Student Group Volunteer",
+      title: "Unity Workshop Instructor",
+      company: "BeeDevelopers — University Student Group",
       date: "Fall 2023",
       summary:
         "Volunteered with BeeDevelopers to teach an introductory Unity and C# workshop for university students.",
@@ -648,7 +648,7 @@ export const PORTFOLIO_INFO: Portfolio = {
     {
       degree: "Bachelor's Degree in Digital Arts",
       school: "University of Guanajuato",
-      date: "2020-2024",
+      date: "2020–2024",
     },
   ],
   extras: {
