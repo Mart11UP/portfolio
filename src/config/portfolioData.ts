@@ -9,7 +9,7 @@ export const PORTFOLIO_INFO: Portfolio = {
   personal: {
     name: "Martín St.",
     title: "Game Developer",
-    headline: "Unity · C# · Gameplay Programming · Multiplayer · Technical Art",
+    headline: "Unity · C# · Gameplay Programming · Physics · Multiplayer · Technical Art",
     summary:
       "Passionate Unity developer with over four years of experience building engaging gameplay systems across a variety of game projects. Skilled in gameplay programming, game physics, UI implementation, shader development, and asset integration. I enjoy collaborating with cross-functional teams to create polished, high-quality experiences while continuously learning and refining both the technical and creative aspects of game development.",
     // optional hero summary used in the site hero; keeps a concise, senior-level intro tuned to your data
@@ -19,7 +19,7 @@ export const PORTFOLIO_INFO: Portfolio = {
 
       My goal is to make the player feel what the design intends.`,
       // Independent from the complete Skills section below. Choose the labels and order shown in the hero.a ds
-      mainSkills: ["Unity", "C#", "Multiplayer", "Physics", "Lua", "Roblox"],
+      mainSkills: ["Unity", "C#", "Physics", "Multiplayer", "Lua", "Roblox"],
     },
     contact: {
       email: "martinst.johnclarke@gmail.com",
@@ -55,8 +55,8 @@ export const PORTFOLIO_INFO: Portfolio = {
       title: "Game Development Areas",
       skills: [
         { name: "Gameplay Programming", icon: "FaGamepad", level: 90 },
-        { name: "Multiplayer Online", icon: "FaNetworkWired", level: 80 },
         { name: "Game Physics", icon: "FaAppleWhole", level: 95 },
+        { name: "Multiplayer Online", icon: "FaNetworkWired", level: 80 },
         { name: "UI Programming", icon: "FaWindowMaximize", level: 90 },
         { name: "Game AI", icon: "FaRobot", level: 70 },
         { name: "Optimization", icon: "FaGaugeHigh", level: 70 },
@@ -84,7 +84,6 @@ export const PORTFOLIO_INFO: Portfolio = {
         { name: "ProBuilder", icon: "FaCube", level: 90 },
         { name: "Photon", icon: "FaNetworkWired", level: 60 },
         { name: "Mirror", icon: "FaNetworkWired", level: 70 },
-        { name: "FishNet", icon: "FaNetworkWired", level: 80 },
         { name: "PurrNet", icon: "FaNetworkWired", level: 90 },
       ],
     },
@@ -277,7 +276,7 @@ export const PORTFOLIO_INFO: Portfolio = {
             media: {
               src: "projects/squishems/energy.gif",
               alt: "Squishems gameplay showing energy reward notifications during a pachinko run",
-              caption: "Queued energy rewards appearing without overlapping.",
+              caption: "Queued energy rewards appearing.",
               fit: "contain",
             },
           },
@@ -326,7 +325,7 @@ export const PORTFOLIO_INFO: Portfolio = {
         engine: "Unity",
         platforms: ["PC"],
         responsibilities: [
-          "Built a requirement system for interactions, puzzles, and level progression",
+          "Created a condition-based interaction system",
           "Implemented dynamic audio and scripted gameplay events",
           "Set up and lit a horror castle environment in Unity HDRP",
         ],
@@ -334,29 +333,31 @@ export const PORTFOLIO_INFO: Portfolio = {
           { type: "facts" },
           { type: "responsibilities" },
           {
-            type: "media",
-            src: "projects/horror/fire.gif",
-            alt: "The player carrying a candle through a fire-lit castle corridor",
-            caption: "Castle environment",
-            fit: "contain",
-          },
-          {
-            type: "media",
-            src: "projects/horror/entity.gif",
-            alt: "An entity appearing in a dark castle corridor",
-            caption: "Scripted Entity Appearance",
-            fit: "contain",
-          },
-          {
             type: "text-media",
-            heading: "Requirement System",
-            body: "For this project, I developed a requirement system that makes it easy to build interactions and puzzles that trigger events and let the player progress through the castle.",
+            heading: "Conditions for Interactions, Puzzles, and Level Progression",
+            body: "Created a condition system to easily define gameplay prerequisites and trigger events when they are met, such as opening the way forward or triggering entity appearances after the player completes a series of steps.",
             media: {
               src: "projects/horror/dead.gif",
               alt: "The player triggering a progression event inside the castle",
               caption: "Lighting the candles to unlock the way forward.",
               fit: "contain",
             },
+          },
+          {
+            type: "mobile-gallery",
+            layout: "landscape-grid",
+            images: [
+              {
+                src: "projects/horror/entity.gif",
+                alt: "An entity appearing in a dark castle corridor",
+                caption: "Scripted Entity Appearance",
+              },
+              {
+                src: "projects/horror/fire.gif",
+                alt: "The player carrying a candle through a fire-lit castle corridor",
+                caption: "Castle environment transformed after completing a progression step.",
+              },
+            ],
           },
         ],
       },
@@ -396,7 +397,7 @@ export const PORTFOLIO_INFO: Portfolio = {
           {
             type: "text-media",
             heading: "How It Works in a Nutshell",
-            body: "The algorithm starts with an empty grid, with every tile option available in each cell. It chooses a cell and “collapses” it into one option.\n\nThat choice removes impossible options from nearby cells. For example, grass cannot connect directly to water, so adjacent water options are discarded. The change keeps propagating, then the algorithm collapses the cell with the fewest options.\n\nIn short: choose a cell → collapse it → propagate the result.",
+            body: "The algorithm starts with an empty grid, with every tile option available in each cell. It chooses a cell and “collapses” it into one option. That choice removes impossible options from nearby cells. For example, grass cannot connect directly to water, so adjacent water options are discarded. The change keeps propagating, then the algorithm collapses the cell with the fewest options.\n\nIn short: choose a cell → collapse it → propagate the result.",
             media: {
               src: "projects/magic-environment-generator/behavior.gif",
               alt: "Grid cells collapsing propagating its effect",
@@ -420,7 +421,7 @@ export const PORTFOLIO_INFO: Portfolio = {
             heading: "Interactive Demo",
             body: "I also built controls that let users interact with the generator and see how it works. They can manually collapse and erase cells, as well as paint terrain types such as water and grass. Painting chooses the terrain category, while the generator selects a compatible tile variation and completes the surrounding environment.",
             trailingLink: {
-              before: "You can play the demo",
+              before: "\nYou can play the demo",
               label: "here",
               url: "demos/procedural-environment/index.html",
               ariaLabel: "Play the Magic Environment Creator demo",

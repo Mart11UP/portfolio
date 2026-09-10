@@ -251,6 +251,7 @@ const DetailMobileGallery: FC<{
   const openerRef = useRef<HTMLButtonElement | null>(null);
   const isOpen = activeIndex !== null;
   const hasMultipleImages = block.images.length > 1;
+  const isLandscapeGrid = block.layout === "landscape-grid";
 
   useEffect(() => {
     if (!isOpen) return;
@@ -329,31 +330,49 @@ const DetailMobileGallery: FC<{
       {block.heading && <SectionHeading>{block.heading}</SectionHeading>}
       <div
         role="region"
-        aria-label={block.heading ?? "Mobile screenshots"}
-        className="flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain pb-4 pr-8"
+        aria-label={block.heading ?? "Project screenshots"}
+        className={
+          isLandscapeGrid
+            ? "grid gap-4 sm:grid-cols-2"
+            : "flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain pb-4 pr-8"
+        }
       >
         {block.images.map((image, index) => (
           <figure
             key={`${image.src}-${index}`}
-            className="w-[min(72vw,14rem)] shrink-0 snap-start"
+            className={
+              isLandscapeGrid
+                ? "min-w-0"
+                : "w-[min(72vw,14rem)] shrink-0 snap-start"
+            }
           >
-            <button
-              type="button"
-              onClick={(event) => openImage(index, event.currentTarget)}
-              className="group relative block w-full cursor-zoom-in overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg)] text-left shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand)]"
-              aria-label={`Expand screenshot ${index + 1} of ${block.images.length}: ${image.alt}`}
-            >
+            {isLandscapeGrid ? (
               <img
                 src={resolveMediaPath(image.thumbnailSrc ?? image.src)}
                 alt={image.alt}
                 loading="lazy"
                 decoding="async"
-                className="aspect-[230/498] w-full object-contain"
+                className="aspect-video w-full rounded-2xl border border-[var(--border)] bg-[var(--bg)] object-contain shadow-sm"
               />
-              <span className="absolute right-2 top-2 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/25 bg-black/65 text-white shadow-sm transition group-hover:bg-black/80 group-focus-visible:bg-black/80">
-                <Expand aria-hidden="true" className="h-4 w-4" />
-              </span>
-            </button>
+            ) : (
+              <button
+                type="button"
+                onClick={(event) => openImage(index, event.currentTarget)}
+                className="group relative block w-full cursor-zoom-in overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg)] text-left shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand)]"
+                aria-label={`Expand screenshot ${index + 1} of ${block.images.length}: ${image.alt}`}
+              >
+                <img
+                  src={resolveMediaPath(image.thumbnailSrc ?? image.src)}
+                  alt={image.alt}
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-[230/498] w-full object-contain"
+                />
+                <span className="absolute right-2 top-2 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/25 bg-black/65 text-white shadow-sm transition group-hover:bg-black/80 group-focus-visible:bg-black/80">
+                  <Expand aria-hidden="true" className="h-4 w-4" />
+                </span>
+              </button>
+            )}
             {image.caption && (
               <figcaption className="mt-2 text-xs leading-relaxed text-[var(--muted)] opacity-75">
                 {image.caption}
@@ -363,7 +382,8 @@ const DetailMobileGallery: FC<{
         ))}
       </div>
 
-      {activeImage &&
+      {!isLandscapeGrid &&
+        activeImage &&
         createPortal(
           <div
             ref={lightboxRef}

@@ -59,7 +59,7 @@ const PortfolioPage: React.FC = () => {
         <section id="skills" className="py-8">
           <h2 className="text-2xl font-semibold text-[var(--brand)]">Skills</h2>
           <p className="mb-6 text-sm text-gray-500 dark:text-gray-400 mt-1">
-            Game development areas, tools, and technologies I work with regularly.
+            Game development skills and tools I use regularly.
           </p>
           <SkillsList skills={PORTFOLIO_INFO.skills} isBar={true} />
         </section>

@@ -133,6 +133,7 @@ export type ProjectDetailBlock =
   | {
       type: "mobile-gallery";
       heading?: string;
+      layout?: "portrait-scroll" | "landscape-grid";
       images: {
         /** Full-size image used by the expanded viewer. */
         src: string;
