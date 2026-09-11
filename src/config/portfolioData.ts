@@ -49,6 +49,7 @@ export const PORTFOLIO_INFO: Portfolio = {
         { name: "Roblox Studio", icon: "SiRobloxstudio", level: 80 },
         { name: "Lua", icon: "SiLua", level: 80 },
         { name: "Visual Studio", icon: "BiLogoVisualStudio", level: 90 },
+        { name: "Visual Studio Code", icon: "BiLogoVisualStudio", level: 80 },
       ],
     },
     {
