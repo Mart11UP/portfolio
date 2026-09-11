@@ -92,6 +92,7 @@ export const PORTFOLIO_INFO: Portfolio = {
       title: "Art & Content Creation",
       skills: [
         { name: "Blender", icon: "SiBlender", level: 70 },
+        { name: "Maya", icon: "SiAutodeskmaya", level: 40 },
         { name: "Substance 3D Painter", icon: "FaPaintbrush", level: 70 },
         { name: "Adobe Photoshop", icon: "SiAdobephotoshop", level: 80 },
         { name: "Adobe Illustrator", icon: "SiAdobeillustrator", level: 80 },
@@ -523,6 +524,7 @@ export const PORTFOLIO_INFO: Portfolio = {
         responsibilities: [
           "Developed modular GOAP agents with reusable goals, actions, and strategies",
           "Built a configurable food chain system for diets and predator-prey interactions",
+          "Set up characters by integrating their gameplay behaviors, animations, and procedural animation systems",
         ],
         content: [
           { type: "facts" },
