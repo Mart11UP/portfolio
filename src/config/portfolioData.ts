@@ -11,7 +11,7 @@ export const PORTFOLIO_INFO: Portfolio = {
     title: "Game Developer",
     headline: "Unity · C# · Gameplay Programming · Physics · Multiplayer · Technical Art",
     summary:
-      "Passionate Unity developer with over four years of experience building engaging gameplay systems across a variety of game projects. Skilled in gameplay programming, game physics, UI implementation, shader development, and asset integration. I enjoy collaborating with cross-functional teams to create polished, high-quality experiences while continuously learning and refining both the technical and creative aspects of game development.",
+      "Unity developer with over four years of experience working on a wide variety of game projects. My experience includes gameplay programming, physics, UI implementation, shaders, and asset integration. I enjoy working across both the technical and creative sides of game development, collaborating with others, learning new things, and ultimately creating experiences that feel good to play.",
     // optional hero summary used in the site hero; keeps a concise, senior-level intro tuned to your data
     hero: {
       summary: `I love building and improving gameplay, working with controllers, physics, and feedback to turn ideas into the best experiences for players.
