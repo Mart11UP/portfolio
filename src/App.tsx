@@ -3,6 +3,7 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 import PortfolioPage from "./pages/PortfolioPage";
 import ResumePage from "./pages/ResumePage";
+import UnleashDarknessPage from "./pages/UnleashDarknessPage";
 
 const App: React.FC = () => {
   return (
@@ -11,6 +12,10 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<PortfolioPage />} />
           <Route path="/resume" element={<ResumePage />} />
+          <Route
+            path="/projects/unleash-darkness"
+            element={<UnleashDarknessPage />}
+          />
         </Routes>
       </div>
     </Router>
