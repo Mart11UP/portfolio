@@ -176,6 +176,8 @@ export type Project = {
   links?: ProjectLink[]; // alternate links
   date?: DateRange | string;
   featured?: boolean;
+  /** Set to false to keep the project in the portfolio but omit it from the resume. */
+  showInResume?: boolean;
   status?: ProjectStatus; // one portfolio classification per project
   details?: ProjectDetails;
 };

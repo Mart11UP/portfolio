@@ -23,6 +23,7 @@ export const Resume: React.FC<{ className?: string }> = ({
   };
 
   const contact = personal.contact ?? {};
+  const projects = resumeInfo.projects?.filter((project) => project.showInResume !== false) ?? [];
 
   function formatDate(date?: string | DateRange): string {
     if (!date) return "";
@@ -250,11 +251,11 @@ export const Resume: React.FC<{ className?: string }> = ({
       )}
 
       {/* Projects */}
-      {resumeInfo.projects && resumeInfo.projects.length > 0 && (
+      {projects.length > 0 && (
         <section>
           <h2 className="text-base font-semibold mt-4">Projects</h2>
           <div className="space-y-4">
-            {resumeInfo.projects.map((p) => (
+            {projects.map((p) => (
               <div key={p.id ?? p.title} className="text-sm">
                 <div className="flex justify-between">
                   <div className="font-medium">

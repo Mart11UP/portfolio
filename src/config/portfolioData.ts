@@ -319,6 +319,7 @@ export const PORTFOLIO_INFO: Portfolio = {
       tags: ["Game Systems", "Audio", "HDRP", "Level Design", "PC", "Unity", "C#"],
       image: "projects/horror/header.jpg",
       links: [],
+      showInResume: false,
       status: "prototype",
       details: {
         showHeaderImage: true,
@@ -379,6 +380,7 @@ export const PORTFOLIO_INFO: Portfolio = {
           icon: "FaGamepad",
         },
       ],
+      showInResume: false,
       status: "technical-demo",
       details: {
         showHeaderImage: true,
@@ -602,7 +604,7 @@ export const PORTFOLIO_INFO: Portfolio = {
       summary:
         "Researched procedural content generation techniques and algorithms for dynamic game environments.",
       bullets: [
-        "Implemented the Wave Function Collapse algorithm in a real-time procedural generation demo.",
+        "Implemented a real-time procedural generation demo.",
         "Published an article on the challenges and potential of procedural generation in game design.",
       ],
       tech: ["Unity", "C#", "Procedural Generation", "Wave Function Collapse"],
