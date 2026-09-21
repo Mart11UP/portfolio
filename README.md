@@ -4,6 +4,8 @@ My personal game-development portfolio, featuring selected professional and inde
 
 **Live portfolio:** [mart11up.github.io/portfolio](https://mart11up.github.io/portfolio/)
 
+**Showcase version (without contact or social links):** [mart11up.github.io/portfolio/showcase](https://mart11up.github.io/portfolio/showcase/)
+
 ## Highlights
 
 - Game-development case studies with images, GIFs, responsibilities, and technical details
@@ -33,11 +35,20 @@ Create a production build with:
 npm run build
 ```
 
-## Deployment
-
-The portfolio is configured for GitHub Pages at `/portfolio/`.
+Create both synchronized versions with:
 
 ```bash
+npm run build:all
+```
+
+Both versions use the same components and portfolio data. The showcase is a build variant, so project and content changes automatically appear in both; only contact and social features are removed from the showcase build.
+
+## Deployment
+
+The portfolio is configured for GitHub Pages at `/portfolio/`, with the showcase variant at `/portfolio/showcase/`.
+
+```bash
+npm run build:all
 npm run deploy
 ```
 

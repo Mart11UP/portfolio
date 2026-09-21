@@ -6,10 +6,14 @@
   "homepage": "https://mart11up.github.io/portfolio/",
   "scripts": {
     "dev": "vite",
+    "dev:showcase": "vite --mode showcase",
     "build": "tsc -b && vite build",
+    "build:showcase": "tsc -b && vite build --mode showcase",
+    "build:all": "npm run build && npm run build:showcase && node scripts/merge-showcase-build.mjs",
     "update:magic-demo": "node scripts/update-magic-environment-build.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
+    "preview:showcase": "vite preview --outDir dist-showcase",
     "deploy": "gh-pages -d dist",
     "format": "prettier --write .",
     "tw:init": "tailwindcss init -p"

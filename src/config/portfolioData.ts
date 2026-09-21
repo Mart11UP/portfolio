@@ -1,4 +1,5 @@
 import type { Portfolio, TagColors } from "../types/portfolio";
+import { CONTACT_LINKS_ENABLED } from "./siteVariant";
 
 export const PORTFOLIO_INFO: Portfolio = {
   meta: {
@@ -21,24 +22,26 @@ export const PORTFOLIO_INFO: Portfolio = {
       // Independent from the complete Skills section below. Choose the labels and order shown in the hero.a ds
       mainSkills: ["Unity", "C#", "Physics", "Multiplayer", "Lua", "Roblox"],
     },
-    contact: {
-      email: "martinst.johnclarke@gmail.com",
-      // phone: "+52 462 227 6661",
-      location: "Guadalajara, México",
-      website: "https://mart11up.github.io/portfolio/",
-      socials: [
-        {
-          label: "ArtStation",
-          url: "https://www.artstation.com/mart11up",
-          icon: "SiArtstation",
-        },
-        {
-          label: "LinkedIn",
-          url: "https://www.linkedin.com/in/mart11up",
-          icon: "SiLinkedin",
-        },
-      ],
-    },
+    contact: CONTACT_LINKS_ENABLED
+      ? {
+          email: "martinst.johnclarke@gmail.com",
+          // phone: "+52 462 227 6661",
+          location: "Guadalajara, México",
+          website: "https://mart11up.github.io/portfolio/",
+          socials: [
+            {
+              label: "ArtStation",
+              url: "https://www.artstation.com/mart11up",
+              icon: "SiArtstation",
+            },
+            {
+              label: "LinkedIn",
+              url: "https://www.linkedin.com/in/mart11up",
+              icon: "SiLinkedin",
+            },
+          ],
+        }
+      : undefined,
   },
   skills: [
     {
@@ -206,7 +209,7 @@ export const PORTFOLIO_INFO: Portfolio = {
             type: "media",
             src: "projects/unicorn-academy/race.gif",
             alt: "Third-person view of a rider racing a unicorn toward a checkpoint",
-            caption: "Racing through the open world toward the next checkpoint.",
+            caption: "Racing through the open world during one of the game’s quests.",
             fit: "contain",
           },
           {
@@ -218,7 +221,7 @@ export const PORTFOLIO_INFO: Portfolio = {
             type: "media",
             src: "projects/unicorn-academy/snowball.gif",
             alt: "Player marker and warning prompt during a snowball-dodging minigame among snow-covered crates",
-            caption: "Dodging snowballs in a Snowy Mountain minigame.",
+            caption: "Dodging snowballs flying toward the player in a Snowy Mountain minigame.",
             fit: "contain",
           },
           { type: "outcome" },

@@ -1,6 +1,7 @@
 import { animate, motion } from "framer-motion";
 import { useMemo, useState } from "react";
 import { PORTFOLIO_INFO } from "../config/portfolioData";
+import { CONTACT_LINKS_ENABLED } from "../config/siteVariant";
 import type { AvatarItem } from "../types/portfolio";
 
 // Senior-level hero with staggered entrances, skills, career impact, and CTAs.
@@ -259,14 +260,16 @@ export const About: React.FC = () => {
                   See my work&nbsp;▼
                 </a>
 
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-2 rounded-md border border-border px-4 py-3 text-base font-normal text-foreground hover:bg-muted"
-                  onClick={(e) => onNavClick(e, "#contact")}
-                  onKeyDown={(e) => handleKeyActivation(e, "#contact")}
-                >
-                  Let's talk
-                </a>
+                {CONTACT_LINKS_ENABLED && (
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-2 rounded-md border border-border px-4 py-3 text-base font-normal text-foreground hover:bg-muted"
+                    onClick={(e) => onNavClick(e, "#contact")}
+                    onKeyDown={(e) => handleKeyActivation(e, "#contact")}
+                  >
+                    Let's talk
+                  </a>
+                )}
               </motion.div>
             </div>
           </motion.div>
